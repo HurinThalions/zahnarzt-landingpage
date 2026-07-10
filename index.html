@@ -129,22 +129,22 @@
 <form class="form-container" action="/save.php" method="POST">
 
   <section class="step" id="step1">
-    <h1 class="question">Bist du aktuell gesetzlich oder privat versichert?</h1>
+    <h1 class="question">Wie sind Sie bisher versichert?</h1>
     <div class="options-grid">
       <label class="option-card">
         <input type="radio" name="insuranceType" value="gesetzlich" checked>
-        Gesetzlich versichert
+        Gesetzlich
       </label>
       <label class="option-card">
         <input type="radio" name="insuranceType" value="privat">
-        Privat versichert
+        Privat
       </label>
     </div>
     <a href="#step2" class="btn">OK ✓</a>
   </section>
 
   <section class="step" id="step2">
-    <h1 class="question">Bei welcher Krankenkasse bist du aktuell?</h1>
+    <h1 class="question">Bei welcher Krankenkasse sind Sie aktuell versichert?</h1>
     <input type="text" class="input-text" placeholder="Z.B. AOK, TK, Barmer..." name="insurance">
     <a href="#step3" class="btn">OK ✓</a>
   </section>
@@ -157,7 +157,7 @@
   </section>
 
   <section class="step" id="step4">
-    <h1 class="question">In welche Altersgruppe fällst du?</h1>
+    <h1 class="question">Wie alt sind Sie?</h1>
     <div class="options-grid">
       <label class="option-card">
         <input type="radio" name="ageRange" value="18-24" required>
@@ -188,19 +188,43 @@
   </section>
 
   <section class="step" id="step5">
-    <h1 class="question">Was ist dein Arbeitsverhältnis?</h1>
-    <input type="text" class="input-text" placeholder="Angestellt" name="employmentStatus">
-    <a href="#step6" class="btn">OK ✓</a>
+    <h1 class="question">Was machen Sie aktuell beruflich?</h1>
+    <div class="options-grid">
+      <label class="option-card">
+        <input type="radio" value="empoyed">Angestellt
+      </label>
+      <label class="option-card">
+        <input type="radio" value="self_employed">Selbstständig
+      </label>
+      <label class="option-card">
+        <input type="radio" value="parantal_leave">In Elternzeit
+      </label>
+      <label class="option-card">
+        <input type="radio" value="job_seeking">Arbeitssuchend
+      </label>
+      <label class="option-card">
+        <input type="radio" value="student_training">Studium/Ausbildung
+      </label>
+      <label class="option-card">
+        <input type="radio" value="school">Schule
+      </label>
+    </div>
+    <a href="#step6" class="btn">OK ✓</a>    
   </section>
 
   <section class="step" id="step6">
-    <h1 class="question">Wer ist der versicherte?(leer wenn du es selber bist)</h1>
-    <input type="text" class="input-text" name="insuranceHolder">
+    <h1 class="question">Sind sie selbst- oder Familienversichert?</h1>
+    <label class="option-card">
+      <input type="radio" value="self_insured">Selbst versichert
+    </label>
+    <label class="option-card">
+      <input type="radio" value="familiy_insured">Familienversichert
+    </label>
     <a href="#step7" class="btn">OK ✓</a>
   </section>
 
   <section class="step" id="step7">
-    <h1 class="question">Ist eine Zahnzusatzversicherung vorhanden?</h1>
+    <h1 class="question">Haben Sie eine Zahnzusatzversicherung?</h1>
     <div class="options-grid">
       <label class="option-card" onclick="document.getElementById('dentalSupplementBtn').href='#step8' ">
         <input type="radio" name="hasDentalSupplement" value="ja">
@@ -215,18 +239,19 @@
   </section>
   
   <section class="step" id="step8">
-    <h1 class="question">Name der Zahnzusatzversicherung?</h1>
-    <input type="text" class="input-text" placeholder="AOK, TK, Barmer..." name="dentalSupplementCompany">
+    <h1 class="question">Bei welcher Gesellschaft besteht die Zahnzusatz?</h1>
+    <input type="text" class="input-text" placeholder="Allianz, Arag, Barmenia..." name="dentalSupplementCompany">
     <a href="#step9" class="btn">OK ✓</a>
   </section>
 
   <section class="step" id="step9">
-    <h1 class="question">Wo dürfen wir dir die Infos hinsenden?</h1>
-    <input type="email" class="input-text" placeholder="deine@email.de" name="email" required>
-    <input type="tel" class="input-text" placeholder="Telefonnummer(optional)" name="phone">
+    <h1 class="title">Glückwunsch, dass Sie diesen Schritt gegangen sind - eine Förderung für Sie ist möglich</h1>
+    Damit wir die Chance individuell prüfen können, brauchen wir Ihre Kontaktdaten.
+    Natürlich kostenlos & unverbindlich.
+    <input type="tel" class="input-text" placeholder="Telefonnummer" name="phone" required>
+    <input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email">
     <input type="hidden" value="yes" name="consentGiven">
     <button type="submit" class="btn">Absenden</button>
-    Hiermit erlaubst du uns dir Informationen zukommen zulassen.
   </section>
 
 </form>
