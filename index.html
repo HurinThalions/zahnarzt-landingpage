@@ -4,125 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zahnversicherung</title>
-  <style>
-    /* 1. Global Reset & Fonts */
-    :root {
-      --primary-color: #1a1a1a;
-      --bg-color: #f7f9fa;
-      --text-color: #333;
-      --card-bg: #ffffff;
-    }
-    
-    body, html {
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      height: 100%;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      scroll-behavior: smooth; /* Enables the smooth sliding effect */
-    }
-    
-    /* 2. The Typeform "Magic" via CSS Scroll Snap */
-    .form-container {
-      height: 100vh;
-      overflow-y: auto;
-      scroll-snap-type: y mandatory; /* Snaps exactly to each section */
-    }
+  <link rel="stylesheet" href="/style.css">
+  <script>
+	  window.addEventListener('DOMContentLoaded', () => {
+		  if(!window.location.hash){
+			  window.location.hash = '#step1';
+		  }
+	  });
 
-    /* 3. Each step is exactly one screen tall */
-    .step {
-      height: 100vh;
-      scroll-snap-align: start; /* Ensures it locks into place */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-      box-sizing: border-box;
-    }
-
-    /* 4. Beautiful, minimal typography */
-    .question {
-      font-size: 2.2rem;
-      margin-bottom: 2rem;
-      text-align: center;
-      max-width: 600px;
-      font-weight: 300;
-      line-height: 1.3;
-    }
-
-    /* 5. Clean Layout for Multiple Choice */
-    .options-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 100%;
-      max-width: 400px;
-    }
-
-    .option-card {
-      background: var(--card-bg);
-      border: 1px solid #e0e0e0;
-      padding: 1.2rem 1.5rem;
-      border-radius: 8px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-    }
-
-    .option-card:hover, .option-card:focus-within {
-      background: #eceff1;
-      border-color: #b0bec5;
-      transform: translateY(-2px);
-    }
-
-    /* Hide default radio, rely on the card click */
-    .option-card input[type="radio"] {
-      margin-right: 1.5rem;
-      transform: scale(1.5);
-      cursor: pointer;
-    }
-
-    /* 6. Clean Text Inputs */
-    .input-text {
-      width: 100%;
-      max-width: 400px;
-      padding: 1rem 0;
-      font-size: 1.5rem;
-      border: none;
-      border-bottom: 2px solid #ccc;
-      background: transparent;
-      outline: none;
-      transition: border-color 0.3s;
-      color: var(--primary-color);
-    }
-
-    .input-text:focus {
-      border-color: var(--primary-color);
-    }
-
-    /* 7. Buttons */
-    .btn {
-      margin-top: 2rem;
-      padding: 1rem 2.5rem;
-      background: var(--primary-color);
-      color: white;
-      font-size: 1.2rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-
-    .btn:hover {
-      opacity: 0.8;
-    }
-  </style>
+	  window.addEventListener('hashchange',()=>{
+		   document.querySelector(window.location.hash || "#step1").scrollIntoView();
+	  });
+  </script>
 </head>
 <body>
 
@@ -132,31 +25,59 @@
     <h1 class="question">Wie sind Sie bisher versichert?</h1>
     <div class="options-grid">
       <label class="option-card">
-        <input type="radio" name="insuranceType" value="gesetzlich" checked>
+        <input type="radio" name="insuranceType" value="gesetzlich" onclick="document.getElementById('PrivatBtn').href='#step2'" checked>
         Gesetzlich
       </label>
       <label class="option-card">
-        <input type="radio" name="insuranceType" value="privat">
+	      <!-- Privatvesicherte können keine Zusatz- und Familienversicherung haben, deswegen wird die Zusatz übersprungen. -->
+        <input type="radio" name="insuranceType" value="privat" onclick="document.getElementById('PrivatBtn').href='#step5'">
         Privat
       </label>
     </div>
-    <a href="#step2" class="btn">OK ✓</a>
+    <a href="#step2" class="btn" id="PrivatBtn">OK ✓</a>
   </section>
 
   <section class="step" id="step2">
-    <h1 class="question">Bei welcher Krankenkasse sind Sie aktuell versichert?</h1>
-    <input type="text" class="input-text" placeholder="Z.B. AOK, TK, Barmer..." name="insurance">
-    <a href="#step3" class="btn">OK ✓</a>
+    <h1 class="question">Haben Sie eine Zahnzusatzversicherung?</h1>
+    <div class="options-grid">
+      <label class="option-card" onclick="document.getElementById('dentalSupplementBtn').href='#step3'">
+        <input type="radio" name="hasDentalSupplement" value="ja">
+	Ja
+      </label>
+      <label class="option-card" onclick="document.getElementById('dentalSupplementBtn').href='#step4'">
+        <input type="radio" name="hasDentalSupplement" value="nein" checked>
+        Nein
+      </label>
+    </div>
+    <a href="#step4" class="btn" id="dentalSupplementBtn">OK ✓</a>
   </section>
-
+  
   <section class="step" id="step3">
-    <h1 class="question">Wie lautet dein Vor- und Nachname?</h1>
-    <input type="text" class="input-text" placeholder="Max" name="firstname" required>
-    <input type="text" class="input-text" placeholder="Mustermann" name="lastname" required>
+    <h1 class="question">Bei welcher Gesellschaft besteht die Zahnzusatz?</h1>
+    <input type="text" class="input-text" placeholder="Allianz, Arag, Barmenia..." name="dentalSupplementCompany">
     <a href="#step4" class="btn">OK ✓</a>
   </section>
 
   <section class="step" id="step4">
+    <h1 class="question">Sind sie selbst- oder Familienversichert?</h1>
+    <div class="options-grid">
+      <label class="option-card">
+        <input type="radio" value="self_insured">Selbst versichert
+      </label>
+      <label class="option-card">
+        <input type="radio" value="familiy_insured">Familienversichert
+      </label>
+    </div>
+    <a href="#step5" class="btn">OK ✓</a>
+  </section>
+
+  <section class="step" id="step5">
+    <h1 class="question">Bei welcher Krankenkasse sind Sie aktuell versichert?</h1>
+    <input type="text" class="input-text" placeholder="Z.B. AOK, TK, Barmer..." name="insurance">
+    <a href="#step6" class="btn">OK ✓</a>
+  </section>
+
+  <section class="step" id="step6">
     <h1 class="question">Wie alt sind Sie?</h1>
     <div class="options-grid">
       <label class="option-card">
@@ -184,73 +105,43 @@
         54-60
       </label>
     </div>
-    <a href="#step5" class="btn">OK ✓</a>
-  </section>
-
-  <section class="step" id="step5">
-    <h1 class="question">Was machen Sie aktuell beruflich?</h1>
-    <div class="options-grid">
-      <label class="option-card">
-        <input type="radio" value="empoyed">Angestellt
-      </label>
-      <label class="option-card">
-        <input type="radio" value="self_employed">Selbstständig
-      </label>
-      <label class="option-card">
-        <input type="radio" value="parantal_leave">In Elternzeit
-      </label>
-      <label class="option-card">
-        <input type="radio" value="job_seeking">Arbeitssuchend
-      </label>
-      <label class="option-card">
-        <input type="radio" value="student_training">Studium/Ausbildung
-      </label>
-      <label class="option-card">
-        <input type="radio" value="school">Schule
-      </label>
-    </div>
-    <a href="#step6" class="btn">OK ✓</a>    
-  </section>
-
-  <section class="step" id="step6">
-    <h1 class="question">Sind sie selbst- oder Familienversichert?</h1>
-    <label class="option-card">
-      <input type="radio" value="self_insured">Selbst versichert
-    </label>
-    <label class="option-card">
-      <input type="radio" value="familiy_insured">Familienversichert
-    </label>
     <a href="#step7" class="btn">OK ✓</a>
   </section>
 
   <section class="step" id="step7">
-    <h1 class="question">Haben Sie eine Zahnzusatzversicherung?</h1>
+    <h1 class="question">Was machen Sie aktuell beruflich?</h1>
     <div class="options-grid">
-      <label class="option-card" onclick="document.getElementById('dentalSupplementBtn').href='#step8' ">
-        <input type="radio" name="hasDentalSupplement" value="ja">
-	Ja
+      <label class="option-card">
+        <input type="radio" name="employmentStatus" value="empoyed">Angestellt
       </label>
-      <label class="option-card" onclick="document.getElementById('dentalSupplementBtn').href='#step9')">
-        <input type="radio" name="hasDentalSupplement" value="nein" checked>
-        Nein
+      <label class="option-card">
+        <input type="radio" name="employmentStatus" value="self_employed">Selbstständig
+      </label>
+      <label class="option-card">
+        <input type="radio" name="employmentStatus" value="parantal_leave">In Elternzeit
+      </label>
+      <label class="option-card">
+        <input type="radio" name="employmentStatus" value="job_seeking">Arbeitssuchend
+      </label>
+      <label class="option-card">
+        <input type="radio" name="employmentStatus" value="student_training">Studium/Ausbildung
+      </label>
+      <label class="option-card">
+        <input type="radio" name="employmentStatus" value="school">Schule
       </label>
     </div>
-    <a href="#step9" class="btn" id="dentalSupplementBtn">OK ✓</a>
-  </section>
-  
-  <section class="step" id="step8">
-    <h1 class="question">Bei welcher Gesellschaft besteht die Zahnzusatz?</h1>
-    <input type="text" class="input-text" placeholder="Allianz, Arag, Barmenia..." name="dentalSupplementCompany">
-    <a href="#step9" class="btn">OK ✓</a>
+    <a href="#step8" class="btn">OK ✓</a>    
   </section>
 
-  <section class="step" id="step9">
+  <section class="step" id="step8">
     <h1 class="title">Glückwunsch, dass Sie diesen Schritt gegangen sind - eine Förderung für Sie ist möglich</h1>
     Damit wir die Chance individuell prüfen können, brauchen wir Ihre Kontaktdaten.
     Natürlich kostenlos & unverbindlich.
     <input type="tel" class="input-text" placeholder="Telefonnummer" name="phone" required>
+    <input type="text" class="input-text" placeholder="Max" name="firstname" required>
+    <input type="text" class="input-text" placeholder="Mustermann" name="lastname" required>
     <input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email">
-    <input type="hidden" value="yes" name="consentGiven">
+    <div style="width: 100%; max-width: 400px; margin: 5px;"><input type="radio" name="consentGiven" checked>Hier mit erlaube ich das ich bezüglich der hier gegeben angaben kontaktiert werden darf.</div>
     <button type="submit" class="btn">Absenden</button>
   </section>
 

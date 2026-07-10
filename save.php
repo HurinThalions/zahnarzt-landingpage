@@ -43,7 +43,7 @@ if (empty($input)){
 	exit;
 }
 
-if (empty( $input['consentGiven'])||empty($input['email'])){
+if (empty( $input['consentGiven'])||empty($input['phone'])){
 	http_response_code(422);
 	echo json_encode(["error"=>"missing Email or consent"]);
 	exit;
@@ -105,12 +105,16 @@ $params = [
 
 try {
 	$result = $service->spreadsheets_values->append($spreadsheetId, $range, $body, $params);
-	echo json_encode([
+	error_log("SUCCESS: ".json_encode([
 		"success" => true,
 		"leadId" => $leadId,
 		"updatedRows" => $result->getUpdates()->getUpdatedRows()
-	]);
+	]));
+	header("Location: /danke.html");
+	exit;
 } catch (Exception $e){
 	http_response_code(500);
-	echo json_encode(["error" => "Failed to write to Google Sheets: " . $e->getMessage()]);
+	echo json_encode(["error" => "Failed to write to Google Sheets: " . $e->getMessage(),
+			"account name" => $env['GOOGLE_SHEETS_CLIENT_EMAIL'
+			]]);
 }
