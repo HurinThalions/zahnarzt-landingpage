@@ -8,132 +8,179 @@
   <script>
 	  window.addEventListener('DOMContentLoaded', () => {
 		  if(!window.location.hash){
-			  window.location.hash = '#step1';
+			  window.location.hash = '#start';
 		  }
 	  });
 
 	  window.addEventListener('hashchange',()=>{
-		   document.querySelector(window.location.hash || "#step1").scrollIntoView();
+		   document.querySelector(window.location.hash || "#start").scrollIntoView();
 	  });
+	  const jump = (btn,loc)=>{
+		  if(btn)console.log("found");
+		  document.getElementById(btn).href=loc;
+	  };
   </script>
 </head>
 <body>
 
+<section class="step" id="start">
+  <h1 class="question">Prüfen sie jetzt, ob Krankenkassen Ihre Zahnzusatz fördert</h1>
+  <div class="info-text">
+  Meine Förderpartner prüft kostenlos, ob Krankenkassen Ihre Zahnzusatz fördern.<br>
+  Anonym & in unter 60 Sekunden.
+  </div>
+  <a href="#step1" class="btn">Jetzt Prüfen ✓</a>
+</section>
+
 <form class="form-container" action="/save.php" method="POST">
 
   <section class="step" id="step1">
-    <h1 class="question">Wie sind Sie bisher versichert?</h1>
+    <h1 class="question">Was war bisher der Grund, warum sie noch nicht gestartet sind?</h1>
     <div class="options-grid">
       <label class="option-card">
-        <input type="radio" name="insuranceType" value="gesetzlich" onclick="document.getElementById('PrivatBtn').href='#step2'" checked>
+        <input type="radio" name="reason" value="cost"  checked>
+	Kosten
+      </label>
+      <label class="option-card">
+        <input type="radio" name="reason" value="time" >
+	Zeit
+      </label>
+      <label class="option-card">
+        <input type="radio" name="reason" value="knowledge" >
+	Ich wusste nichts davon
+      </label>
+      <label class="option-card">
+        <input type="radio" name="reason" value="other" >
+	Etwas anderes
+      </label>
+    </div>
+    <a href="#step2" class="btn">OK ✓</a>
+  </section>
+
+  <section class="step" id="step2">
+    <h1 class="question">Wie sind Sie bisher versichert?</h1>
+    <div class="options-grid">
+      <label class="option-card" >
+        <input type="radio" name="insuranceType" value="gesetzlich" checked onchange="jump('PrivatBtn','#step3')">
         Gesetzlich
       </label>
       <label class="option-card">
 	      <!-- Privatvesicherte können keine Zusatz- und Familienversicherung haben, deswegen wird die Zusatz übersprungen. -->
-        <input type="radio" name="insuranceType" value="privat" onclick="document.getElementById('PrivatBtn').href='#step5'">
+        <input type="radio" name="insuranceType" value="privat" onchange="jump('PrivatBtn','#step7');jump('employmentBtn','#step11')">
         Privat
       </label>
     </div>
-    <a href="#step2" class="btn" id="PrivatBtn">OK ✓</a>
+    <a href="#step3" class="btn" id="PrivatBtn">OK ✓</a>
   </section>
 
-  <section class="step" id="step2">
+  <section class="step" id="step3">
     <h1 class="question">Haben Sie eine Zahnzusatzversicherung?</h1>
     <div class="options-grid">
-      <label class="option-card" onclick="document.getElementById('dentalSupplementBtn').href='#step3'">
-        <input type="radio" name="hasDentalSupplement" value="ja">
+      <label class="option-card">
+        <input type="radio" name="hasDentalSupplement" value="ja" onchange="jump('dentalSupplementBtn','#step4')">
 	Ja
       </label>
-      <label class="option-card" onclick="document.getElementById('dentalSupplementBtn').href='#step4'">
-        <input type="radio" name="hasDentalSupplement" value="nein" checked>
+      <label class="option-card">
+        <input type="radio" name="hasDentalSupplement" value="nein" checked onchange="jump('dentalSupplementBtn','#step5')">
         Nein
       </label>
     </div>
     <a href="#step4" class="btn" id="dentalSupplementBtn">OK ✓</a>
   </section>
   
-  <section class="step" id="step3">
+  <section class="step" id="step4">
     <h1 class="question">Bei welcher Gesellschaft besteht die Zahnzusatz?</h1>
     <input type="text" class="input-text" placeholder="Allianz, Arag, Barmenia..." name="dentalSupplementCompany">
-    <a href="#step4" class="btn">OK ✓</a>
-  </section>
-
-  <section class="step" id="step4">
-    <h1 class="question">Sind sie selbst- oder Familienversichert?</h1>
-    <div class="options-grid">
-      <label class="option-card">
-        <input type="radio" value="self_insured">Selbst versichert
-      </label>
-      <label class="option-card">
-        <input type="radio" value="familiy_insured">Familienversichert
-      </label>
-    </div>
     <a href="#step5" class="btn">OK ✓</a>
   </section>
 
   <section class="step" id="step5">
-    <h1 class="question">Bei welcher Krankenkasse sind Sie aktuell versichert?</h1>
-    <input type="text" class="input-text" placeholder="Z.B. AOK, TK, Barmer..." name="insurance">
-    <a href="#step6" class="btn">OK ✓</a>
+    <h1 class="question">Sind sie selbst- oder Familienversichert?</h1>
+    <div class="options-grid">
+      <label class="option-card" >
+        <input type="radio" name="family" value="self_insured" checked onchange="jump('holderBtn','#step7')">Selbst versichert
+      </label>
+      <label class="option-card">
+        <input type="radio" name="family" value="familiy_insured" onck="jump('holderBtn','#step6')">Familienversichert
+      </label>
+    </div>
+    <a href="#step7" id="holderBtn" class="btn">OK ✓</a>
   </section>
 
   <section class="step" id="step6">
-    <h1 class="question">Wie alt sind Sie?</h1>
+    <h1 class="question">Wer ist Versicherungsnehmer?</h1>
     <div class="options-grid">
       <label class="option-card">
-        <input type="radio" name="ageRange" value="18-24" required>
-        18-24
+        <input type="radio" name="hasDentalSupplement" value="ja" checked onchange="jump('familyBtn','#step7')">
+	Ich selbst
       </label>
       <label class="option-card">
-        <input type="radio" name="ageRange" value="25-30" checked>
-        25-30
-      </label>
-      <label class="option-card">
-        <input type="radio" name="ageRange" value="31-37">
-        31-37
-      </label>
-      <label class="option-card">
-        <input type="radio" name="ageRange" value="38-44">
-        38-44
-      </label>
-      <label class="option-card">
-        <input type="radio" name="ageRange" value="45-53">
-        45-53
-      </label>
-      <label class="option-card">
-        <input type="radio" name="ageRange" value="54-60">
-        54-60
+        <input type="radio" name="hasDentalSupplement" value="nein" onchange="jump('familyBtn','#theInsurer')">
+	Jemand anderes
       </label>
     </div>
-    <a href="#step7" class="btn">OK ✓</a>
+    <a href="#step7" id="familyBtn" class="btn">OK ✓</a>
   </section>
 
   <section class="step" id="step7">
-    <h1 class="question">Was machen Sie aktuell beruflich?</h1>
-    <div class="options-grid">
-      <label class="option-card">
-        <input type="radio" name="employmentStatus" value="empoyed">Angestellt
-      </label>
-      <label class="option-card">
-        <input type="radio" name="employmentStatus" value="self_employed">Selbstständig
-      </label>
-      <label class="option-card">
-        <input type="radio" name="employmentStatus" value="parantal_leave">In Elternzeit
-      </label>
-      <label class="option-card">
-        <input type="radio" name="employmentStatus" value="job_seeking">Arbeitssuchend
-      </label>
-      <label class="option-card">
-        <input type="radio" name="employmentStatus" value="student_training">Studium/Ausbildung
-      </label>
-      <label class="option-card">
-        <input type="radio" name="employmentStatus" value="school">Schule
-      </label>
-    </div>
-    <a href="#step8" class="btn">OK ✓</a>    
+    <h1 class="question">Bei welcher Krankenkasse sind Sie aktuell versichert?</h1>
+    <input type="text" class="input-text" placeholder="Z.B. AOK, TK, Barmer..." name="insurance">
+    <a href="#step8" class="btn">OK ✓</a>
   </section>
 
   <section class="step" id="step8">
+    <h1 class="question">Wie alt sind Sie?</h1>
+    <div class="options-grid">
+      <label class="option-card">
+        <input type="radio" name="ageRange" value="<18" required onchange="jump('ageBtn','#under18')">
+	Unter 18
+      </label>
+      <label class="option-card">
+        <input type="radio" name="ageRange" value="18-25" checked onchange="jump('ageBtn','#step9')">
+        18-25
+      </label>
+      <label class="option-card">
+        <input type="radio" name="ageRange" value="26-35" onchange="jump('ageBtn','#step9')">
+        26-35
+      </label>
+      <label class="option-card">
+        <input type="radio" name="ageRange" value="36-55" onchange="jump('ageBtn','#step9')">
+        36-55
+      </label>
+      <label class="option-card">
+	<input type="radio" name="ageRange" value="56<" onchange="jump('ageBtn','#over56')">
+        56 und älter
+      </label>
+    </div>
+    <a href="#step9" id="ageBtn" class="btn">OK ✓</a>
+  </section>
+
+  <section class="step" id="step9">
+    <h1 class="question">Was machen Sie aktuell beruflich?</h1>
+    <div class="options-grid">
+      <label class="option-card">
+        <input type="radio" name="employmentStatus" value="empoyed" onchange="jump('employmentBtn','#step10')">Angestellt
+      </label>
+      <label class="option-card">
+        <input type="radio" name="employmentStatus" value="self_employed" onchange="jump('employmentBtn','#step10')">Selbstständig
+      </label>
+      <label class="option-card">
+        <input type="radio" name="employmentStatus" value="parantal_leave" onchange="jump('employmentBtn','#step10')">In Elternzeit
+      </label>
+      <label class="option-card">
+        <input type="radio" name="employmentStatus" value="job_seeking" onchange="jump('employmentBtn','#jobseeking')">Arbeitssuchend
+      </label>
+      <label class="option-card">
+        <input type="radio" name="employmentStatus" value="student_training" onchange="jump('employmentBtn','#step10')">Studium/Ausbildung
+      </label>
+      <label class="option-card">
+        <input type="radio" name="employmentStatus" value="school" onchange="jump('employmentBtn','#school')">Schule
+      </label>
+    </div>
+    <a href="#step10" id="employmentBtn" class="btn">OK ✓</a>    
+  </section>
+
+  <section class="step" id="step10">
     <h1 class="title">Glückwunsch, dass Sie diesen Schritt gegangen sind - eine Förderung für Sie ist möglich</h1>
     Damit wir die Chance individuell prüfen können, brauchen wir Ihre Kontaktdaten.
     Natürlich kostenlos & unverbindlich.
@@ -145,7 +192,45 @@
     <button type="submit" class="btn">Absenden</button>
   </section>
 
+  <section class="step" id="step11">
+    <h1 class="title">Glückwunsch(Privat Versichert), dass Sie diesen Schritt gegangen sind - eine Förderung für Sie ist möglich</h1>
+    Damit wir die Chance individuell prüfen können, brauchen wir Ihre Kontaktdaten.
+    Natürlich kostenlos & unverbindlich.
+    <input type="tel" class="input-text" placeholder="Telefonnummer" name="phone" required>
+    <input type="text" class="input-text" placeholder="Max" name="firstname" required>
+    <input type="text" class="input-text" placeholder="Mustermann" name="lastname" required>
+    <input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email">
+    <div style="width: 100%; max-width: 400px; margin: 5px;"><input type="radio" name="consentGiven" checked>Hier mit erlaube ich das ich bezüglich der hier gegeben angaben kontaktiert werden darf.</div>
+    <button type="submit" class="btn">Absenden</button>
+  </section>
+
 </form>
+
+<!--Not Elegible text-->
+
+<section class="step" id="over56">
+    <h1 class="title">Über 56</h1>
+</section>
+
+<section class="step" id="under18">
+    <h1 class="title">Unter 18</h1>
+</section>
+
+<section class="step" id="theInsurer">
+    <h1 class="title">Nicht der Versicherte</h1>
+</section>
+
+<section class="step" id="school">
+    <h1 class="title">Schüler</h1>
+</section>
+
+<section class="step" id="jobseeking">
+    <h1 class="title">Arbeitslos</h1>
+</section>
+
+<section class="step" id="notElegible">
+    <h1 class="title">Not Elegible</h1>
+</section>
 
 </body>
 </html>
