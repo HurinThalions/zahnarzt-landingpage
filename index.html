@@ -54,23 +54,23 @@
     <h1 class="question">Bei welcher Krankenkasse sind Sie aktuell versichert?</h1>
       <div class="options-grid">
         <label class="option-card">
-          <input type="radio" name="krankenkasse" value="Aok" required onchange="jump('KVbtn','#step7')">
+          <input type="radio" name="krankenkasse" value="Aok" required>
 	          Aok
         </label>
         <label class="option-card">
-          <input type="radio" name="krankenkasse" value="Techniker" checked onchange="jump('KVbtn','#step7')">
+          <input type="radio" name="krankenkasse" value="Techniker" checked>
             DAK
         </label>
         <label class="option-card">
-          <input type="radio" name="krankenkasse" value="26-35" onchange="jump('KVbtn','#step7')">
+          <input type="radio" name="krankenkasse" value="26-35">
             SBK
         </label>
         <label class="option-card">
-          <input type="radio" name="krankenkasse" value="36-55" onchange="jump('KVbtn','#step7')">
+          <input type="radio" name="krankenkasse" value="36-55">
             Die Techniker
         </label>
         <label class="option-card">
-	        <input type="radio" name="krankenkasse" value="56<" onchange="jump('KVbtn','#step7')">
+	        <input type="radio" name="krankenkasse" value="56<">
             Eine andere
         </label>
       </div>
@@ -79,7 +79,7 @@
 
   <section class="step" id="step3">
     <h1 class="question">Bei welcher Krankenkasse sind Sie aktuell versichert?</h1>
-      <input type="text" class="input-text" placeholder="Allianz, Arag, Axa..." name="dentalSupplementCompany">
+      <input type="text" class="input-text" placeholder="Allianz, Arag, Axa..." name="krankenkasse">
     <a href="#step8" class="btn">OK ✓</a>
   </section>
 
@@ -211,12 +211,12 @@
     <h1 class="title">Glückwunsch, dass Sie diesen Schritt gegangen sind - eine Förderung für Sie ist möglich</h1>
     Damit wir die Förderung individuell prüfen können, brauchen wir Ihre Kontaktdaten.
     Natürlich kostenlos & unverbindlich.
-    <input type="tel" class="input-text" placeholder="Telefonnummer" name="phone" required>
-    <input type="text" class="input-text" placeholder="Max" name="firstname" required>
-    <input type="text" class="input-text" placeholder="Mustermann" name="lastname" required>
-    <input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email">
+    <input type="tel" class="input-text" placeholder="Telefonnummer" name="phone" id="phone" required>
+    <input type="text" class="input-text" placeholder="Max" name="firstname" id="firstname" required>
+    <input type="text" class="input-text" placeholder="Mustermann" name="lastname" id="lastname" required>
+    <input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email" id="email">
     <div style="width: 100%; max-width: 400px; margin: 5px;">
-      <input type="radio" name="consentGiven" id="dsgvo1" checked>
+      <input type="checkbox" value="true"  name="consentGiven" id="dsgvo1" checked>
       <label for="dsgvo1">Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</label>
     </div>
     <button type="submit" class="btn">Absenden</button>
@@ -226,12 +226,12 @@
     <h1 class="title">Glückwunsch, dass Sie diesen Schritt gegangen sind – ein individueller Check-up ist möglich!</h1>
     Damit wir Ihnen individuell Helfen können, brauchen wir Ihre Kontaktdaten.
     Natürlich kostenlos & unverbindlich.
-    <input type="tel" class="input-text" placeholder="Telefonnummer" name="phone" required>
-    <input type="text" class="input-text" placeholder="Max" name="firstname" required>
-    <input type="text" class="input-text" placeholder="Mustermann" name="lastname" required>
-    <input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email">
+    <input type="tel" class="input-text" placeholder="Telefonnummer" oninput="phone.value=this.value">
+    <input type="text" class="input-text" placeholder="Max" oninput="firstname.value=this.value">
+    <input type="text" class="input-text" placeholder="Mustermann" oninput="lastname.value=this.value">
+    <input type="email" class="input-text" placeholder="deine@email.de (optional)" oninput="email.value=this.value">
     <div style="width: 100%; max-width: 400px; margin: 5px;">
-      <input type="radio" name="consentGiven" id="dsgvo2" />
+      <input type="checkbox" value="true"  oninput="consentGiven" id="dsgvo2.value=this.value" />
         <label for="dsgvo2">Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</label>
     </div>
     <button type="submit" class="btn">Absenden</button>
@@ -241,12 +241,12 @@
     <h1 class="title">Wir überprüfen für Sie alternative Möglichkeiten, die Förderung zu erhalten</h1>
     Damit wir die Chance individuell prüfen können, brauchen wir Ihre Kontaktdaten.
     Natürlich kostenlos & unverbindlich.
-    <input type="tel" class="input-text" placeholder="Telefonnummer" name="phone" required>
-    <input type="text" class="input-text" placeholder="Max" name="firstname" required>
-    <input type="text" class="input-text" placeholder="Mustermann" name="lastname" required>
-    <input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email">
+    <input type="tel" class="input-text" placeholder="Telefonnummer" oninput="phone.value=this.value">
+    <input type="text" class="input-text" placeholder="Max" oninput="firstname.value=this.value">
+    <input type="text" class="input-text" placeholder="Mustermann" oninput="lastname.value=this.value">
+    <input type="email" class="input-text" placeholder="deine@email.de (optional)" oninput="email.value=this.value">
     <div style="width: 100%; max-width: 400px; margin: 5px;">
-      <input type="radio" name="consentGiven" id="dsgvo3" />
+      <input type="checkbox" value="true"  oninput="consentGiven" id="dsgvo3.value=this.value" />
         <label for="dsgvo3">Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</label>
     </div>
     <button type="submit" class="btn">Absenden</button>
@@ -271,7 +271,7 @@
     <div class="info-text">
     Falls Sie ein Elternteil sind und sich für Förderung für Ihr Kind interessieren, geben Sie bitte Ihr aktuelles Alter an.
     </div>
-    <a href="#step2" class="btn">Fragebogen starten</a>
+    <a href="#step1" class="btn">Fragebogen starten</a>
 </section>
 
 <section class="step" id="theInsurer">

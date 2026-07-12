@@ -5,11 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zahnversicherung</title>
   <link rel="stylesheet" href="/style.css">
+  <script>
+	  window.addEventListener('DOMContentLoaded', () => {
+		  if(!window.location.hash){
+			  window.location.hash = '#start';
+		  }
+	  });
+
+	  window.addEventListener('hashchange',()=>{
+		   document.querySelector(window.location.hash || "#start").scrollIntoView();
+	  });
+	  const jump = (btn,loc)=>{
+		  if(btn)console.log("found");
+		  document.getElementById(btn).href=loc;
+	  };
+  </script>
 </head>
 <body>
 
 
-  <section class="step" id="step1">
+  <section class="step" id="start">
     <h1 class="question">Danke für deine Zeit, wir melden uns mit guten Nachrichten!</h1>
   </section>
 
