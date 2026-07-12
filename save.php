@@ -91,7 +91,6 @@ $mapData = [
 	'raw_answer'		=> json_encode($input),
 ];
 
-
 $spreadsheetId = $env['GOOGLE_SHEETS_SPREADSHEET_ID'] ?? '1SkkDREMkH31N-uMeS1132nem2osqeMJqSh6Sc1vxjp8';
 $sheetName = $env['GOOGLE_SHEETS_SHEET_NAME'] ?? 'Leads';
 
@@ -146,4 +145,5 @@ try {
 			"account name" => $env['GOOGLE_SHEETS_CLIENT_EMAIL'],
 			"rows"=> $row
 			]);
+ }
 }
