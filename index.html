@@ -38,12 +38,12 @@
     <h1 class="question">Wie sind Sie bisher versichert?</h1>
     <div class="options-grid">
       <label class="option-card" >
-        <input type="radio" name="insuranceType" value="gesetzlich" checked onchange="jump('PrivatBtn','#step3')">
+        <input type="radio" name="insuranceType" value="gesetzlich" checked onchange="jump('PrivatBtn','#step2')">
         Gesetzlich
       </label>
       <label class="option-card">
 	      <!-- Privatvesicherte können keine Zusatz- und Familienversicherung haben, deswegen wird die Zusatz übersprungen. -->
-        <input type="radio" name="insuranceType" value="privat" onchange="jump('PrivatBtn','#step7');jump('employmentBtn','#step11')">
+        <input type="radio" name="insuranceType" value="privat" onchange="jump('PrivatBtn','#step3')">
         Privat
       </label>
     </div>
@@ -51,24 +51,36 @@
   </section>
 
   <section class="step" id="step2">
-    <h1 class="question">Haben Sie eine Zahnzusatzversicherung?</h1>
-    <div class="options-grid">
-      <label class="option-card">
-        <input type="radio" name="hasDentalSupplement" value="ja" checked onchange="jump('dentalSupplementBtn','#step4')">
-	Ja
-      </label>
-      <label class="option-card">
-        <input type="radio" name="hasDentalSupplement" value="nein" checked onchange="jump('dentalSupplementBtn','#step5')">
-        Nein
-      </label>
-    </div>
-    <a href="#step3" class="btn" id="dentalSupplementBtn">OK ✓</a>
-  </section>
-  
-  <section class="step" id="step3">
-    <h1 class="question">Bei welcher Gesellschaft besteht die Zahnzusatz?</h1>
-    <input type="text" class="input-text" placeholder="Allianz, Arag, Barmenia..." name="dentalSupplementCompany">
+    <h1 class="question">Bei welcher Krankenkasse sind Sie aktuell versichert?</h1>
+      <div class="options-grid">
+        <label class="option-card">
+          <input type="radio" name="krankenkasse" value="Aok" required onchange="jump('KVbtn','#step7')">
+	          Aok
+        </label>
+        <label class="option-card">
+          <input type="radio" name="krankenkasse" value="Techniker" checked onchange="jump('KVbtn','#step7')">
+            DAK
+        </label>
+        <label class="option-card">
+          <input type="radio" name="krankenkasse" value="26-35" onchange="jump('KVbtn','#step7')">
+            SBK
+        </label>
+        <label class="option-card">
+          <input type="radio" name="krankenkasse" value="36-55" onchange="jump('KVbtn','#step7')">
+            Die Techniker
+        </label>
+        <label class="option-card">
+	        <input type="radio" name="krankenkasse" value="56<" onchange="jump('KVbtn','#step7')">
+            Eine andere
+        </label>
+      </div>
     <a href="#step4" class="btn">OK ✓</a>
+  </section>
+
+  <section class="step" id="step3">
+    <h1 class="question">Bei welcher Krankenkasse sind Sie aktuell versichert?</h1>
+      <input type="text" class="input-text" placeholder="Allianz, Arag, Axa..." name="dentalSupplementCompany">
+    <a href="#step8" class="btn">OK ✓</a>
   </section>
 
   <section class="step" id="step4">
@@ -88,7 +100,7 @@
     <h1 class="question">Wer ist Versicherungsnehmer?</h1>
     <div class="options-grid">
       <label class="option-card">
-        <input type="radio" name="hasDentalSupplement" value="ja" checked onchange="jump('familyBtn','#step7')">
+        <input type="radio" name="hasDentalSupplement" value="ja" checked onchange="jump('familyBtn','#step6')">
 	        Ich selbst
       </label>
       <label class="option-card">
@@ -100,33 +112,27 @@
   </section>
 
   <section class="step" id="step6">
-    <h1 class="question">Bei welcher Krankenkasse sind Sie aktuell versichert?</h1>
-      <div class="options-grid">
-        <label class="option-card">
-          <input type="radio" name="krankenkasse" value="Aok" required onchange="jump('KVbtn','#step7')">
-	          Aok
-        </label>
-        <label class="option-card">
-          <input type="radio" name="krankenkasse" value="Techniker" checked onchange="jump('KVbtn','#step7')">
-            DAK
-        </label>
-        <label class="option-card">
-          <input type="radio" name="krankenkasse" value="26-35" onchange="jump('KVbtn','#step7')">
-            Techniker
-        </label>
-        <label class="option-card">
-          <input type="radio" name="krankenkasse" value="36-55" onchange="jump('KVbtn','#step7')">
-            Eine andere
-        </label>
-        <label class="option-card">
-	        <input type="radio" name="krankenkasse" value="56<" onchange="jump('KVbtn','#step7')">
-            
-        </label>
-      </div>
-    <a href="#step7" class="btn">OK ✓</a>
+    <h1 class="question">Haben Sie eine Zahnzusatzversicherung?</h1>
+    <div class="options-grid">
+      <label class="option-card">
+        <input type="radio" name="hasDentalSupplement" value="ja" checked onchange="jump('dentalSupplementBtn','#step7')">
+	        Ja
+      </label>
+      <label class="option-card">
+        <input type="radio" name="hasDentalSupplement" value="nein" checked onchange="jump('dentalSupplementBtn','#step8')">
+        Nein
+      </label>
+    </div>
+    <a href="#step7" class="btn" id="dentalSupplementBtn">OK ✓</a>
   </section>
 
   <section class="step" id="step7">
+    <h1 class="question">Bei welcher besteht aktuell Ihre Zahnzusatzversicherung?</h1>
+      <input type="text" class="input-text" placeholder="Allianz, Arag, Axa..." name="dentalSupplementCompany">
+    <a href="#step8" class="btn">OK ✓</a>
+  </section>
+
+  <section class="step" id="step8">
     <h1 class="question">Wie alt sind Sie?</h1>
     <div class="options-grid">
       <label class="option-card">
@@ -150,10 +156,10 @@
         56 und älter
       </label>
     </div>
-    <a href="#step8" id="ageBtn" class="btn">OK ✓</a>
+    <a href="#step9" id="ageBtn" class="btn">OK ✓</a>
   </section>
 
-  <section class="step" id="step8">
+  <section class="step" id="step9">
     <h1 class="question">Was machen Sie aktuell beruflich?</h1>
     <div class="options-grid">
       <label class="option-card">
@@ -175,14 +181,14 @@
         <input type="radio" name="employmentStatus" value="school" onchange="jump('employmentBtn','#school')">Schule
       </label>
     </div>
-    <a href="#step9" id="employmentBtn" class="btn">OK ✓</a>    
+    <a href="#step10" id="employmentBtn" class="btn">OK ✓</a>    
   </section>
 
-  <section class="step" id="step9">
-    <h1 class="question">Was war bisher der Grund, warum sie noch nicht gestartet sind?</h1>
+  <section class="step" id="step10">
+    <h1 class="question">Was war bisher der Grund, warum sie noch keine Förderung genutzt haben?</h1>
     <div class="options-grid">
       <label class="option-card">
-        <input type="radio" name="reason" value="cost"  checked>
+        <input type="radio" name="reason" value="cost">
 	      Kosten
       </label>
       <label class="option-card">
@@ -190,7 +196,7 @@
 	      Zeit
       </label>
       <label class="option-card">
-        <input type="radio" name="reason" value="knowledge" >
+        <input type="radio" name="reason" value="knowledge" checked>
 	      Ich wusste nichts davon
       </label>
       <label class="option-card">
@@ -198,10 +204,10 @@
 	      Etwas anderes
       </label>
     </div>
-    <a href="#step10" class="btn">OK ✓</a>
+    <a href="#step11" class="btn">OK ✓</a>
   </section>
 
-  <section class="step" id="step10">
+  <section class="step" id="step11">
     <h1 class="title">Glückwunsch, dass Sie diesen Schritt gegangen sind - eine Förderung für Sie ist möglich</h1>
     Damit wir die Förderung individuell prüfen können, brauchen wir Ihre Kontaktdaten.
     Natürlich kostenlos & unverbindlich.
@@ -213,7 +219,7 @@
     <button type="submit" class="btn">Absenden</button>
   </section>
 
-  <section class="step" id="step11">
+  <section class="step" id="step12">
     <h1 class="title">Glückwunsch(Privat Versichert), dass Sie diesen Schritt gegangen sind - eine Förderung für Sie ist möglich</h1>
     Damit wir die Chance individuell prüfen können, brauchen wir Ihre Kontaktdaten.
     Natürlich kostenlos & unverbindlich.
