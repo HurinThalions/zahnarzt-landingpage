@@ -1,4 +1,4 @@
 vendor/*
-.env.json
+env.json
 composer.*
 .env*

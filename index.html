@@ -77,7 +77,7 @@
     <h1 class="question">Haben Sie eine Zahnzusatzversicherung?</h1>
     <div class="options-grid">
       <label class="option-card">
-        <input type="radio" name="hasDentalSupplement" value="ja" onchange="jump('dentalSupplementBtn','#step4')">
+        <input type="radio" name="hasDentalSupplement" value="ja" checked onchange="jump('dentalSupplementBtn','#step4')">
 	Ja
       </label>
       <label class="option-card">
@@ -101,7 +101,7 @@
         <input type="radio" name="family" value="self_insured" checked onchange="jump('holderBtn','#step7')">Selbst versichert
       </label>
       <label class="option-card">
-        <input type="radio" name="family" value="familiy_insured" onck="jump('holderBtn','#step6')">Familienversichert
+        <input type="radio" name="family" value="familiy_insured" onchange="jump('holderBtn','#step6')">Familienversichert
       </label>
     </div>
     <a href="#step7" id="holderBtn" class="btn">OK ✓</a>
@@ -159,7 +159,7 @@
     <h1 class="question">Was machen Sie aktuell beruflich?</h1>
     <div class="options-grid">
       <label class="option-card">
-        <input type="radio" name="employmentStatus" value="empoyed" onchange="jump('employmentBtn','#step10')">Angestellt
+        <input type="radio" name="employmentStatus" value="empoyed" checked onchange="jump('employmentBtn','#step10')">Angestellt
       </label>
       <label class="option-card">
         <input type="radio" name="employmentStatus" value="self_employed" onchange="jump('employmentBtn','#step10')">Selbstständig

@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS'){
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-if(!($env = json_decode(file_get_contents('.env.json'),true))){
+if(!($env = json_decode(file_get_contents('env.json'),true))){
 	http_response_code(500);
 	echo json_encode(["error"=>"Couldn't open .env"]);
 	exit;
@@ -76,6 +76,9 @@ $row = [
 	escapeChar($input['insuranceType'] ?? ''),
 	escapeChar($input['insurance'] ?? ''),
 	escapeChar($input['residenceGermany'] ?? ''),
+	escapeChar($input['reason'] ?? ''),
+	escapeChar($input['family'] ?? ''),
+	escapeChar($input['employmentStatus'] ?? ''),
 	escapeChar($input['ageRange'] ?? ''),
 	escapeChar($input['employmentStatus'] ?? ''),
 	escapeChar($input['insuranceHolder'] ?? ''),

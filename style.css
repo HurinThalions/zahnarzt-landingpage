@@ -13,29 +13,41 @@
       height: 100%;
       background-color: var(--bg-color);
       color: var(--text-color);
-      scroll-behavior: smooth; /* Enables the smooth sliding effect */
     }
     
-    /* 2. The Typeform "Magic" via CSS Scroll Snap */
     .form-container {
       height: 100vh;
-      overflow-y: auto;
-      scroll-snap-type: y mandatory; /* Snaps exactly to each section */
+      display: contents;
     }
 
-    /* 3. Each step is exactly one screen tall */
     .step {
-      min-height: 100vh;
-      scroll-snap-align: start; /* Ensures it locks into place */
-      display: flex;
+      overflow-y: auto;
+      min-height: 100dvh;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 1rem 2rem 7rem 2rem;
+      padding: 1rem 2rem 3rem 2rem;
       box-sizing: border-box;
+      display: none;
     }
 
-    /* 4. Beautiful, minimal typography */
+    .step:target {
+      display: flex;
+    }
+    .step * {
+      animation: slideup 0.4s ease forwards;
+    }
+    @keyframes slideup {
+      0% {
+      	transform: translateY(30px);
+	opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+	opacity: 1;
+      }
+    }
+
     .question {
       font-size: clamp(1.8rem, 2.2rem, 2.4rem);
       margin-bottom: 2rem;
@@ -45,13 +57,13 @@
       line-height: 1.3;
     }
 
-    /* 5. Clean Layout for Multiple Choice */
     .options-grid {
       display: flex;
       flex-direction: column;
       gap: 1rem;
       width: 100%;
       max-width: 400px;
+      flex-wrap: wrap;
     }
 
     .option-card {
@@ -73,14 +85,12 @@
       transform: translateY(-2px);
     }
 
-    /* Hide default radio, rely on the card click */
     .option-card input[type="radio"] {
       margin-right: 1.5rem;
       transform: scale(1.5);
       cursor: pointer;
     }
 
-    /* 6. Clean Text Inputs */
     .input-text {
       width: 100%;
       max-width: 400px;
@@ -98,7 +108,6 @@
       border-color: var(--primary-color);
     }
 
-    /* 7. Buttons */
     .btn {
       margin-top: 2rem;
       padding: 1rem 2.5rem;
