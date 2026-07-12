@@ -25,7 +25,7 @@
 
 <section class="step" id="start">
   <h1 class="question">Prüfen sie jetzt, ob Krankenkassen Ihre Zahnzusatz fördert</h1>
-  <div class="info-text">
+  <div class="i-text">
   Meine Förderpartner prüft kostenlos, ob Krankenkassen Ihre Zahnzusatz fördern.<br>
   Anonym & in unter 60 Sekunden.
   </div>
@@ -54,23 +54,23 @@
     <h1 class="question">Bei welcher Krankenkasse sind Sie aktuell versichert?</h1>
       <div class="options-grid">
         <label class="option-card">
-          <input type="radio" name="krankenkasse" value="Aok" required>
+          <input type="radio" name="insuranceGKV" value="Aok" required>
 	          Aok
         </label>
         <label class="option-card">
-          <input type="radio" name="krankenkasse" value="Techniker" checked>
+          <input type="radio" name="insuranceGKV" value="Techniker" checked>
             DAK
         </label>
         <label class="option-card">
-          <input type="radio" name="krankenkasse" value="26-35">
+          <input type="radio" name="insuranceGKV" value="SBK">
             SBK
         </label>
         <label class="option-card">
-          <input type="radio" name="krankenkasse" value="36-55">
+          <input type="radio" name="insuranceGKV" value="DIe Techniker">
             Die Techniker
         </label>
         <label class="option-card">
-	        <input type="radio" name="krankenkasse" value="56<">
+	        <input type="radio" name="insuranceGKV" value="Eine andere">
             Eine andere
         </label>
       </div>
@@ -79,7 +79,7 @@
 
   <section class="step" id="step3">
     <h1 class="question">Bei welcher Krankenkasse sind Sie aktuell versichert?</h1>
-      <input type="text" class="input-text" placeholder="Allianz, Arag, Axa..." name="krankenkasse">
+      <input type="text" class="input-text" placeholder="Allianz, Arag, Axa..." name="insurancePKV">
     <a href="#step8" class="btn">OK ✓</a>
   </section>
 
@@ -209,14 +209,16 @@
 
   <section class="step" id="step11">
     <h1 class="title">Glückwunsch, dass Sie diesen Schritt gegangen sind - eine Förderung für Sie ist möglich</h1>
-    Damit wir die Förderung individuell prüfen können, brauchen wir Ihre Kontaktdaten.
-    Natürlich kostenlos & unverbindlich.
+    <div class="i-text">
+      Damit wir die Förderung individuell prüfen können, brauchen wir Ihre Kontaktdaten.
+      Natürlich kostenlos & unverbindlich.
+    </div>
     <input type="tel" class="input-text" placeholder="Telefonnummer" name="phone" id="phone" required>
     <input type="text" class="input-text" placeholder="Max" name="firstname" id="firstname" required>
     <input type="text" class="input-text" placeholder="Mustermann" name="lastname" id="lastname" required>
     <input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email" id="email">
     <div style="width: 100%; max-width: 400px; margin: 5px;">
-      <input type="checkbox" value="true"  name="consentGiven" id="dsgvo1" checked>
+      <input type="checkbox" value="true"  name="consentGiven" id="dsgvo1" checked required oninvalid="this.setCustomValidity('Bitte die Erlaubnis zur Kontaktaufnahme geben')">
       <label for="dsgvo1">Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</label>
     </div>
     <button type="submit" class="btn">Absenden</button>
@@ -224,8 +226,10 @@
 
   <section class="step" id="step12">
     <h1 class="title">Glückwunsch, dass Sie diesen Schritt gegangen sind – ein individueller Check-up ist möglich!</h1>
+    <div class="i-text">
     Damit wir Ihnen individuell Helfen können, brauchen wir Ihre Kontaktdaten.
     Natürlich kostenlos & unverbindlich.
+    </div>
     <input type="tel" class="input-text" placeholder="Telefonnummer" oninput="phone.value=this.value">
     <input type="text" class="input-text" placeholder="Max" oninput="firstname.value=this.value">
     <input type="text" class="input-text" placeholder="Mustermann" oninput="lastname.value=this.value">
@@ -239,8 +243,10 @@
 
     <section class="step" id="step13">
     <h1 class="title">Wir überprüfen für Sie alternative Möglichkeiten, die Förderung zu erhalten</h1>
+    <div class="i-text">
     Damit wir die Chance individuell prüfen können, brauchen wir Ihre Kontaktdaten.
     Natürlich kostenlos & unverbindlich.
+    </div>
     <input type="tel" class="input-text" placeholder="Telefonnummer" oninput="phone.value=this.value">
     <input type="text" class="input-text" placeholder="Max" oninput="firstname.value=this.value">
     <input type="text" class="input-text" placeholder="Mustermann" oninput="lastname.value=this.value">

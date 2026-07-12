@@ -20,6 +20,10 @@
       color: var(--text-color);
     }
     
+    .title, .i-text {
+	    text-align: center;
+    }
+
     .form-container {
       height: 100vh;
       display: contents;

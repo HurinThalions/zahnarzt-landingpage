@@ -69,35 +69,60 @@ function escapeChar($in){
 	return $in;
 }
 
-$row = [
-	$createdAt,
-	$leadId,
-	$source,
-	escapeChar($input['insuranceType'] ?? ''),
-	escapeChar($input['insurance'] ?? ''),
-	escapeChar($input['residenceGermany'] ?? ''),
-	escapeChar($input['reason'] ?? ''),
-	escapeChar($input['family'] ?? ''),
-	escapeChar($input['employmentStatus'] ?? ''),
-	escapeChar($input['ageRange'] ?? ''),
-	escapeChar($input['employmentStatus'] ?? ''),
-	escapeChar($input['insuranceHolder'] ?? ''),
-	escapeChar($input['hasDentalSupplement'] ?? ''),
-	escapeChar($input['dentalSupplementCompany'] ?? ''),
-	escapeChar($input['firstName'] ?? ''),
-	escapeChar($input['lastName'] ?? ''),
-	escapeChar($input['phone'] ?? ''),
-	escapeChar($input['email'] ?? ''),
-	$consentGiven,
-	json_encode($input),
-	'new',
-	''
+$mapData = [
+	'created_at'		=> $createdAt,
+	'lead_id'		=> $leadId,
+	'source'		=> $source,
+	'versicherungstyp'	=> escapeChar($input['insuranceType'] ?? ''),
+	'krankenkasse_gkv'	=> escapeChar($input['insuranceGKV'] ?? ''),
+	'krankenkasse_pkv'	=> escapeChar($input['insurancePKV'] ?? ''),
+	'familienversicherung'	=> escapeChar($input['family'] ?? ''),
+	'versicherungsnehmer'	=> escapeChar($input['insuranceHolder'] ?? ''),
+	'zahnzusatz'		=> escapeChar($input['hasDentalSupplement'] ?? ''),
+	'gesellschaft_zz'	=> escapeChar($input['dentalSupplementCompany'] ?? ''),
+	'alter'			=> escapeChar($input['ageRange'] ?? ''),
+	'beruf'			=> escapeChar($input['employmentStatus'] ?? ''),
+	'fördernutzung'		=> escapeChar($input['reason'] ?? ''),
+	'vorname'		=> escapeChar($input['firstname'] ?? ''),
+	'nachname'		=> escapeChar($input['lastname'] ?? ''),
+	'telefonnummer'		=> escapeChar($input['phone'] ?? ''),
+	'email'			=> escapeChar($input['email'] ?? ''),
+	'dsgvo'			=> $consentGiven,
+	'raw_answer'		=> json_encode($input),
 ];
+
 
 $spreadsheetId = $env['GOOGLE_SHEETS_SPREADSHEET_ID'] ?? '1SkkDREMkH31N-uMeS1132nem2osqeMJqSh6Sc1vxjp8';
 $sheetName = $env['GOOGLE_SHEETS_SHEET_NAME'] ?? 'Leads';
 
-$range = "{$sheetName}!A:R";
+$headerRange = "{$sheetName}!1:1";
+try{
+	$headerResponse = $service->spreadsheets_values->get($spreadsheetId, $headerRange);
+	$headers = $headerResponse->getValues()[0] ?? [];
+} catch (Exception $e) {
+	error_log("Failed to fetch headers: " .$e->getMessage());
+}
+
+$row = [];
+$leftovers = $mapData;
+foreach ($headers as $header){
+	$cleanHeader = trim($header);
+	if($cleanHeader === '') continue;
+	if(array_key_exists($cleanHeader, $mapData)){
+		$row[] = $mapData[$cleanHeader];
+		unset($leftovers[$cleanHeader]);
+	}else{
+		$row[]='';
+	}
+}
+foreach ($leftovers as $key => $value){
+	if(is_string($key)){
+		$row[]=$value;
+	}
+}
+error_log(json_encode($row));
+
+$range = "{$sheetName}!A:A";
 $body = new \Google_Service_Sheets_ValueRange([
 	'values' => [$row]
 ]);
@@ -118,6 +143,7 @@ try {
 } catch (Exception $e){
 	http_response_code(500);
 	echo json_encode(["error" => "Failed to write to Google Sheets: " . $e->getMessage(),
-			"account name" => $env['GOOGLE_SHEETS_CLIENT_EMAIL'
-			]]);
+			"account name" => $env['GOOGLE_SHEETS_CLIENT_EMAIL'],
+			"rows"=> $row
+			]);
 }
