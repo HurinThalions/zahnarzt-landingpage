@@ -43,7 +43,7 @@
       </label>
       <label class="option-card">
 	      <!-- Privatvesicherte können keine Zusatz- und Familienversicherung haben, deswegen wird die Zusatz übersprungen. -->
-        <input type="radio" name="insuranceType" value="privat" onchange="jump('PrivatBtn','#step3')">
+        <input type="radio" name="insuranceType" value="privat" onchange="jump('PrivatBtn','#step3'); jump('notElegible','#step12')">
         Privat
       </label>
     </div>
@@ -178,7 +178,7 @@
         <input type="radio" name="employmentStatus" value="student_training" onchange="jump('employmentBtn','#step10')">Studium/Ausbildung
       </label>
       <label class="option-card">
-        <input type="radio" name="employmentStatus" value="school" onchange="jump('employmentBtn','#school')">Schule
+        <input type="radio" name="employmentStatus" value="school" onchange="jump('employmentBtn','#step10')">Beamter
       </label>
     </div>
     <a href="#step10" id="employmentBtn" class="btn">OK ✓</a>    
@@ -215,19 +215,31 @@
     <input type="text" class="input-text" placeholder="Max" name="firstname" required>
     <input type="text" class="input-text" placeholder="Mustermann" name="lastname" required>
     <input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email">
-    <div style="width: 100%; max-width: 400px; margin: 5px;"><input type="radio" name="consentGiven" checked>Hier mit erlaube ich das ich bezüglich der hier gegeben angaben kontaktiert werden darf.</div>
+    <div style="width: 100%; max-width: 400px; margin: 5px;"><input type="radio" name="consentGiven" checked>Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</div>
     <button type="submit" class="btn">Absenden</button>
   </section>
 
   <section class="step" id="step12">
-    <h1 class="title">Glückwunsch(Privat Versichert), dass Sie diesen Schritt gegangen sind - eine Förderung für Sie ist möglich</h1>
+    <h1 class="title">Glückwunsch, dass Sie diesen Schritt gegangen sind – ein individueller Check-up ist möglich!</h1>
+    Damit wir Ihnen individuell Helfen können, brauchen wir Ihre Kontaktdaten.
+    Natürlich kostenlos & unverbindlich.
+    <input type="tel" class="input-text" placeholder="Telefonnummer" name="phone" required>
+    <input type="text" class="input-text" placeholder="Max" name="firstname" required>
+    <input type="text" class="input-text" placeholder="Mustermann" name="lastname" required>
+    <input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email">
+    <div style="width: 100%; max-width: 400px; margin: 5px;"><input type="radio" name="consentGiven" checked>Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</div>
+    <button type="submit" class="btn">Absenden</button>
+  </section>
+
+    <section class="step" id="step13">
+    <h1 class="title">Wir überprüfen für Sie alternative Möglichkeiten, die Förderung zu erhalten</h1>
     Damit wir die Chance individuell prüfen können, brauchen wir Ihre Kontaktdaten.
     Natürlich kostenlos & unverbindlich.
     <input type="tel" class="input-text" placeholder="Telefonnummer" name="phone" required>
     <input type="text" class="input-text" placeholder="Max" name="firstname" required>
     <input type="text" class="input-text" placeholder="Mustermann" name="lastname" required>
     <input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email">
-    <div style="width: 100%; max-width: 400px; margin: 5px;"><input type="radio" name="consentGiven" checked>Hier mit erlaube ich das ich bezüglich der hier gegeben angaben kontaktiert werden darf.</div>
+    <div style="width: 100%; max-width: 400px; margin: 5px;"><input type="radio" name="consentGiven" checked>Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</div>
     <button type="submit" class="btn">Absenden</button>
   </section>
 
@@ -236,23 +248,38 @@
 <!--Not Elegible text-->
 
 <section class="step" id="over56">
-    <h1 class="title">Über 56</h1>
+    <h1 class="title">Hinweis</h1>
+    <title class="question">Eine direkte Förderung ist für Sie leider nicht möglich</title>
+    <div class="info-text">
+    Gerne prüfen wir für Sie, ob es alternative Möglichkeiten gibt, Förderungen zu erhalten.
+    </div>
+    <a href="#step13" class="btn">Jetzt Prüfen ✓</a>
 </section>
 
 <section class="step" id="under18">
-    <h1 class="title">Unter 18</h1>
+    <h1 class="title">Hinweis</h1>
+    <title class="question">Für Minderjährige ist eine Prüfung aktuell nicht möglich.</title>
+    <div class="info-text">
+    Falls Sie ein Elternteil sind und sich für Förderung für Ihr Kind interessieren, geben Sie bitte Ihr aktuelles Alter an.
+    </div>
+    <a href="#step2" class="btn">Fragebogen starten</a>
 </section>
 
 <section class="step" id="theInsurer">
-    <h1 class="title">Nicht der Versicherte</h1>
-</section>
-
-<section class="step" id="school">
-    <h1 class="title">Schüler</h1>
+    <h1 class="title">Hinweis</h1>
+    <title class="question">Die Prüfung sollte durch den Versicherungsnehmer erfolgen.</title>
+    <div class="info-text">
+    Bitte leiten Sie diesen kurzen Fragebogen an den Versicherungsnehmer weiter.
+    </div>
+    <a href="#step1" class="btn">Fragebogen starten</a>
 </section>
 
 <section class="step" id="jobseeking">
-    <h1 class="title">Arbeitslos</h1>
+    <h1 class="title">Hinweis</h1>
+    <title class="question">Eine Prüfung ist aktuell leider nur eingeschränkt möglich.</title>
+    <div class="info-text">
+    Bei Arbeitssuchenden ist die Förder- und Versicherungssituation sehr stark eingeschränkt und die Nutzung von Förderungen erschwert.
+    </div>
 </section>
 
 <section class="step" id="notElegible">
