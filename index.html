@@ -14,10 +14,18 @@
 	  });
 
 	  window.addEventListener('hashchange',()=>{
-		   document.querySelector(window.location.hash || "#start").scrollIntoView();
+		const hash = window.location.hash;
+		document.querySelector( hash || "#start").scrollIntoView();
+
+		const hashlist = ["#step12", "#step13", "#step14"];
+		if(hashlist.includes(hash)){
+			document.querySelector(hash).querySelectorAll("input").forEach(el=>el.disabled=false);
+			hashlist.forEach(e=>{
+				if(e!==hash)document.querySelector(e).querySelectorAll("input").forEach(el=>el.disabled=true)
+			});
+		}
 	  });
 	  const jump = (btn,loc)=>{
-		  if(btn)console.log("found");
 		  document.getElementById(btn).href=loc;
 	  };
   </script>
@@ -242,7 +250,7 @@
     <input type="tel" class="input-text" placeholder="Telefonnummer" name="phone" id="phone" required>
     <input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email" id="email">
     <div style="width: 100%; max-width: 400px; margin: 5px;">
-      <input type="checkbox" value="true"  name="consentGiven" id="dsgvo1" required oninvalid="this.setCustomValidity('Bitte die Erlaubnis zur Kontaktaufnahme geben')">
+      <input type="checkbox" value="true"  name="consentGiven" id="dsgvo1" required oninvalid="this.setCustomValidity('Bitte die Erlaubnis zur Kontaktaufnahme geben')" oninput="this.setCustomValidity('')">
       <label for="dsgvo1">Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</label>
     </div>
     <button type="submit" class="btn">Absenden</button>
@@ -254,13 +262,13 @@
 	    Damit wir Ihnen individuell helfen können, brauchen wir Ihre Kontaktdaten.
 	    Natürlich kostenlos & unverbindlich.
     </div>
-    <input type="text" class="input-text" placeholder="Max" oninput="firstname.value=this.value">
-    <input type="text" class="input-text" placeholder="Mustermann" oninput="lastname.value=this.value">
-    <input type="tel" class="input-text" placeholder="Telefonnummer" oninput="phone.value=this.value">
-    <input type="email" class="input-text" placeholder="deine@email.de (optional)" oninput="email.value=this.value">
+    <input type="text" class="input-text" placeholder="Max" name="firstname" id="firstname" required>
+    <input type="text" class="input-text" placeholder="Mustermann" name="lastname" id="lastname" required>
+    <input type="tel" class="input-text" placeholder="Telefonnummer" name="phone" id="phone" required>
+    <input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email" id="email">
     <div style="width: 100%; max-width: 400px; margin: 5px;">
-      <input type="checkbox" value="true"  oninput="consentGiven" id="dsgvo2.value=this.value" />
-        <label for="dsgvo2">Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</label>
+      <input type="checkbox" value="true"  name="consentGiven" id="dsgvo1" required oninvalid="this.setCustomValidity('Bitte die Erlaubnis zur Kontaktaufnahme geben')" oninput="this.setCustomValidity('')">
+      <label for="dsgvo1">Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</label>
     </div>
     <button type="submit" class="btn">Absenden</button>
   </section>
@@ -271,13 +279,13 @@
 	    Damit wir Ihnen das Ergebniss mitteilen können, benötigen wir Ihre Kontaktdaten.
 	    Natürlich kostenlos & unverbindlich.
     </div>
-    <input type="text" class="input-text" placeholder="Max" oninput="firstname.value=this.value">
-    <input type="text" class="input-text" placeholder="Mustermann" oninput="lastname.value=this.value">
-    <input type="tel" class="input-text" placeholder="Telefonnummer" oninput="phone.value=this.value">
-    <input type="email" class="input-text" placeholder="deine@email.de (optional)" oninput="email.value=this.value">
+    <input type="text" class="input-text" placeholder="Max" name="firstname" id="firstname" required>
+    <input type="text" class="input-text" placeholder="Mustermann" name="lastname" id="lastname" required>
+    <input type="tel" class="input-text" placeholder="Telefonnummer" name="phone" id="phone" required>
+    <input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email" id="email">
     <div style="width: 100%; max-width: 400px; margin: 5px;">
-      <input type="checkbox" value="true"  oninput="consentGiven" id="dsgvo3.value=this.value" />
-        <label for="dsgvo3">Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</label>
+      <input type="checkbox" value="true"  name="consentGiven" id="dsgvo1" required oninvalid="this.setCustomValidity('Bitte die Erlaubnis zur Kontaktaufnahme geben')" oninput="this.setCustomValidity('')">
+      <label for="dsgvo1">Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</label>
     </div>
     <button type="submit" class="btn">Absenden</button>
   </section>
