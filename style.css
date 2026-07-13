@@ -144,3 +144,35 @@
     .btn:hover {
       opacity: 0.8;
     }
+
+    .checkboxes {
+      display: inline-block;
+      white-space: nowrap;
+      vertical-align: text;
+
+      background: var(--card-bg);
+      border: 1px solid #e0e0e0;
+      padding: 1.2rem 1.5rem;
+      border-radius: 8px;
+      font-size: clamp( 0.8rem, 1.2rem, 1.4rem);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+
+    .checkboxes input[type="checkbox"] {
+      margin-right: 0.5rem;
+      transform: scale(1.2);
+      cursor: pointer;
+      vertical-align: text;
+
+      margin-right: 1.5rem;
+      transform: scale(1.5);
+      cursor: pointer;
+    }
+
+    .checkboxes:hover, .checkboxes:focus-within {
+      background: #eceff1;
+      border-color: #b0bec5;
+      transform: translateY(-2px);
+    }
