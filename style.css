@@ -122,8 +122,9 @@
       color: var(--primary-color);
     }
 
-    .input-text:focus {
+    .input-text:focus, .input-text::placeholder {
       border-color: var(--primary-color);
+      color: var(--primary-color);
     }
 
     .btn {
@@ -141,8 +142,4 @@
 
     .btn:hover {
       opacity: 0.8;
-    }
-
-    .checkbox {
-      padding: 70px;
     }
