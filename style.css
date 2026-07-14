@@ -145,7 +145,7 @@
       opacity: 0.8;
     }
 
-    .checkboxes {
+    /*.checkboxes {
       display: inline-block;
       white-space: nowrap;
       vertical-align: text;
@@ -175,4 +175,4 @@
       background: #eceff1;
       border-color: #b0bec5;
       transform: translateY(-2px);
-    }
+    }*/

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zahnversicherung</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preload" href="public/HausHintergrund.jpg" as="image" type="image/jpeg">
-  <script>
-	  window.addEventListener('DOMContentLoaded', () => {
-		  if(!window.location.hash){
-			  window.location.hash = '#start';
-		  }
-	  });
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Zahnversicherung</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="preload" href="public/HausHintergrund.jpg" as="image" type="image/jpeg">
+	<script>
+		window.addEventListener('DOMContentLoaded', () => {
+			if(!window.location.hash){
+				window.location.hash = '#start';
+			}
+		});
 
-	  window.addEventListener('hashchange',()=>{
+		window.addEventListener('hashchange',()=>{
 		const hash = window.location.hash;
 		document.querySelector( hash || "#start").scrollIntoView();
 
@@ -24,313 +24,313 @@
 				if(e!==hash)document.querySelector(e).querySelectorAll("input").forEach(el=>el.disabled=true)
 			});
 		}
-	  });
-	  const jump = (btn,loc)=>{
-		  document.getElementById(btn).href=loc;
-	  };
-  </script>
+		});
+		const jump = (btn,loc)=>{
+			document.getElementById(btn).href=loc;
+		};
+	</script>
 </head>
 <body>
 
 <section class="step" id="start">
-  <h1 class="question">Prüfen sie jetzt, ob Krankenkassen Ihre Zahnzusatz fördert</h1>
-  <div class="i-text">
-  Meine Förderpartner prüft kostenlos, ob Krankenkassen Ihre Zahnzusatz fördern.
-  Anonym & in unter 60 Sekunden.
-  </div>
-  <a href="#step1" class="btn">Jetzt Prüfen ✓</a>
+	<h1 class="question">Prüfen sie jetzt, ob Krankenkassen Ihre Zahnzusatz fördert</h1>
+	<div class="i-text">
+	Meine Förderpartner prüft kostenlos, ob Krankenkassen Ihre Zahnzusatz fördern.
+	Anonym & in unter 60 Sekunden.
+	</div>
+	<a href="#step1" class="btn">Jetzt Prüfen ✓</a>
 </section>
 
 <form class="form-container" action="/save.php" method="POST">
 
-  <section class="step" id="step1">
-    <h1 class="question">Wie sind Sie bisher versichert?</h1>
-    <div class="options-grid">
-      <label class="option-card" >
-        <input type="radio" name="insuranceType" value="gesetzlich" checked onchange="jump('PrivatBtn','#step2')">
-        Gesetzlich
-      </label>
-      <label class="option-card">
-	      <!-- Privatvesicherte können keine Zusatz- und Familienversicherung haben, deswegen wird die Zusatz übersprungen. -->
-        <input type="radio" name="insuranceType" value="privat" onchange="jump('PrivatBtn','#step3'); jump('notElegible','#step13')">
-        Privat
-      </label>
-    </div>
-    <a href="#step2" class="btn" id="PrivatBtn">OK ✓</a>
-  </section>
+	<section class="step" id="step1">
+		<h1 class="question">Wie sind Sie bisher versichert?</h1>
+		<div class="options-grid">
+			<label class="option-card" >
+			<input type="radio" name="insuranceType" value="gesetzlich" checked onchange="jump('PrivatBtn','#step2')">
+			Gesetzlich
+			</label>
+			<label class="option-card">
+	<!-- Privatvesicherte können keine Zusatz- und Familienversicherung haben, deswegen wird die Zusatz übersprungen. -->
+			<input type="radio" name="insuranceType" value="privat" onchange="jump('PrivatBtn','#step3'); jump('notElegible','#step13')">
+			Privat
+			</label>
+		</div>
+		<a href="#step2" class="btn" id="PrivatBtn">OK ✓</a>
+	</section>
 
-  <section class="step" id="step2">
-    <h1 class="question">Bei welcher Krankenkasse sind Sie aktuell versichert?</h1>
-      <div class="options-grid">
-        <label class="option-card">
-          <input type="radio" name="insuranceGKV" value="Aok" required>
-	          AOK
-        </label>
-        <label class="option-card">
-          <input type="radio" name="insuranceGKV" value="Techniker" checked>
-            DAK
-        </label>
-        <label class="option-card">
-          <input type="radio" name="insuranceGKV" value="SBK">
-            SBK
-        </label>
-        <label class="option-card">
-          <input type="radio" name="insuranceGKV" value="Die Techniker">
-            Die Techniker
-        </label>
-        <label class="option-card">
-	        <input type="radio" name="insuranceGKV" value="Eine andere">
-            Eine andere
-        </label>
-      </div>
-    <a href="#step4" class="btn">OK ✓</a>
-  </section>
+	<section class="step" id="step2">
+		<h1 class="question">Bei welcher Krankenkasse sind Sie aktuell versichert?</h1>
+			<div class="options-grid">
+				<label class="option-card">
+					<input type="radio" name="insuranceGKV" value="Aok" required>
+					AOK
+				</label>
+				<label class="option-card">
+					<input type="radio" name="insuranceGKV" value="Techniker" checked>
+					DAK
+				</label>
+				<label class="option-card">
+					<input type="radio"name="insuranceGKV"value="SBK">
+					SBK
+				</label>
+				<label class="option-card">
+					<input type="radio"name="insuranceGKV"value="DieTechniker">
+					Die Techniker
+				</label>
+				<label class="option-card">
+					<input type="radio"name="insuranceGKV"value="Eineandere">
+					Eine andere
+				</label>
+			</div>
+		<a href="#step4" class="btn">OK ✓</a>
+	</section>
 
-  <section class="step" id="step3">
-    <h1 class="question">Bei welcher Krankenkasse sind Sie aktuell versichert?</h1>
-      <input type="text" class="input-text" placeholder="Allianz, Arag, Axa..." name="insurancePKV">
-    <a href="#step8" class="btn">OK ✓</a>
-  </section>
+	<section class="step" id="step3">
+		<h1 class="question">Bei welcher Krankenkasse sind Sie aktuell versichert?</h1>
+		<input type="text" class="input-text" placeholder="Allianz, Arag, Axa..." name="insurancePKV">
+		<a href="#step8" class="btn">OK ✓</a>
+	</section>
 
-  <section class="step" id="step4">
-    <h1 class="question">Sind sie selbst- oder Familienversichert?</h1>
-    <div class="options-grid">
-      <label class="option-card" >
-        <input type="radio" name="family" value="self_insured" checked onchange="jump('holderBtn','#step6')">Selbst versichert
-      </label>
-      <label class="option-card">
-        <input type="radio" name="family" value="familiy_insured" onchange="jump('holderBtn','#step5')">Familienversichert
-      </label>
-    </div>
-    <a href="#step6" id="holderBtn" class="btn">OK ✓</a>
-  </section>
+	<section class="step" id="step4">
+		<h1 class="question">Sind sie selbst- oder Familienversichert?</h1>
+		<div class="options-grid">
+			<label class="option-card" >
+				<input type="radio" name="family" value="self_insured" checked onchange="jump('holderBtn','#step6')">Selbst versichert
+			</label>
+			<label class="option-card">
+				<input type="radio" name="family" value="familiy_insured" onchange="jump('holderBtn','#step5')">Familienversichert
+			</label>
+		</div>
+		<a href="#step6" id="holderBtn" class="btn">OK ✓</a>
+	</section>
 
-  <section class="step" id="step5">
-    <h1 class="question">Wer ist Versicherungsnehmer?</h1>
-    <div class="options-grid">
-      <label class="option-card">
-        <input type="radio" name="hasDentalSupplement" value="ja" checked onchange="jump('familyBtn','#step6')">
-	        Ich selbst
-      </label>
-      <label class="option-card">
-        <input type="radio" name="hasDentalSupplement" value="nein" onchange="jump('familyBtn','#theInsurer')">
-        	Jemand anderes
-      </label>
-    </div>
-    <a href="#step6" id="familyBtn" class="btn">OK ✓</a>
-  </section>
+	<section class="step" id="step5">
+		<h1 class="question">Wer ist Versicherungsnehmer?</h1>
+		<div class="options-grid">
+			<label class="option-card">
+				<input type="radio" name="hasDentalSupplement" value="ja" checked onchange="jump('familyBtn','#step6')">
+				Ich selbst
+			</label>
+			<label class="option-card">
+				<input type="radio" name="hasDentalSupplement" value="nein" onchange="jump('familyBtn','#theInsurer')">
+				Jemand anderes
+			</label>
+		</div>
+		<a href="#step6" id="familyBtn" class="btn">OK ✓</a>
+	</section>
 
-  <section class="step" id="step6">
-    <h1 class="question">Haben Sie eine Zahnzusatzversicherung?</h1>
-    <div class="options-grid">
-      <label class="option-card">
-        <input type="radio" name="hasDentalSupplement" value="ja" checked onchange="jump('dentalSupplementBtn','#step7')">
-	        Ja
-      </label>
-      <label class="option-card">
-        <input type="radio" name="hasDentalSupplement" value="nein" checked onchange="jump('dentalSupplementBtn','#step8')">
-        Nein
-      </label>
-    </div>
-    <a href="#step7" class="btn" id="dentalSupplementBtn">OK ✓</a>
-  </section>
+	<section class="step" id="step6">
+		<h1 class="question">Haben Sie eine Zahnzusatzversicherung?</h1>
+		<div class="options-grid">
+			<label class="option-card">
+				<input type="radio" name="hasDentalSupplement" value="ja" checked onchange="jump('dentalSupplementBtn','#step7')">
+				Ja
+			</label>
+			<label class="option-card">
+				<input type="radio" name="hasDentalSupplement" value="nein" checked onchange="jump('dentalSupplementBtn','#step8')">
+				Nein
+			</label>
+		</div>
+		<a href="#step7" class="btn" id="dentalSupplementBtn">OK ✓</a>
+	</section>
 
-  <section class="step" id="step7">
-    <h1 class="question">Bei welcher Gesellschaft besteht aktuell Ihre Zahnzusatzversicherung?</h1>
-      <input type="text" class="input-text" placeholder="Allianz, Arag, Axa..." name="dentalSupplementCompany">
-    <a href="#step8" class="btn">OK ✓</a>
-  </section>
+	<section class="step" id="step7">
+		<h1 class="question">Bei welcher Gesellschaft besteht aktuell Ihre Zahnzusatzversicherung?</h1>
+		<input type="text" class="input-text" placeholder="Allianz, Arag, Axa..." name="dentalSupplementCompany">
+		<a href="#step8" class="btn">OK ✓</a>
+	</section>
 
-  <section class="step" id="step8">
-    <h1 class="question">Wie alt sind Sie?</h1>
-    <div class="options-grid">
-      <label class="option-card">
-        <input type="radio" name="ageRange" value="<18" required onchange="jump('ageBtn','#under18')">
-	      Unter 18
-      </label>
-      <label class="option-card">
-        <input type="radio" name="ageRange" value="18-25" checked onchange="jump('ageBtn','#step9')">
-        18-25
-      </label>
-      <label class="option-card">
-        <input type="radio" name="ageRange" value="26-35" onchange="jump('ageBtn','#step9')">
-        26-35
-      </label>
-      <label class="option-card">
-        <input type="radio" name="ageRange" value="36-55" onchange="jump('ageBtn','#step9')">
-        36-55
-      </label>
-      <label class="option-card">
-	      <input type="radio" name="ageRange" value="56<" onchange="jump('ageBtn','#over56')">
-        56 und älter
-      </label>
-    </div>
-    <a href="#step9" id="ageBtn" class="btn">OK ✓</a>
-  </section>
+	<section class="step" id="step8">
+		<h1 class="question">Wie alt sind Sie?</h1>
+		<div class="options-grid">
+			<label class="option-card">
+				<input type="radio" name="ageRange" value="<18" required onchange="jump('ageBtn','#under18')">
+				Unter 18
+			</label>
+			<label class="option-card">
+				<input type="radio" name="ageRange" value="18-25" checked onchange="jump('ageBtn','#step9')">
+				18-25
+			</label>
+			<label class="option-card">
+				<input type="radio" name="ageRange" value="26-35" onchange="jump('ageBtn','#step9')">
+				26-35
+			</label>
+			<label class="option-card">
+				<input type="radio" name="ageRange" value="36-55" onchange="jump('ageBtn','#step9')">
+				36-55
+			</label>
+			<label class="option-card">
+				<input type="radio" name="ageRange" value="56<" onchange="jump('ageBtn','#over56')">
+				56 und älter
+			</label>
+		</div>
+		<a href="#step9" id="ageBtn" class="btn">OK ✓</a>
+	</section>
 
-  <section class="step" id="step9">
-    <h1 class="question">Was machen Sie aktuell beruflich?</h1>
-    <div class="options-grid">
-      <label class="option-card">
-        <input type="radio" name="employmentStatus" value="empoyed" checked onchange="jump('employmentBtn','#step10')">Angestellt
-      </label>
-      <label class="option-card">
-        <input type="radio" name="employmentStatus" value="self_employed" onchange="jump('employmentBtn','#step10')">Selbstständig
-      </label>
-      <label class="option-card">
-        <input type="radio" name="employmentStatus" value="parantal_leave" onchange="jump('employmentBtn','#step10')">In Elternzeit
-      </label>
-      <label class="option-card">
-        <input type="radio" name="employmentStatus" value="job_seeking" onchange="jump('employmentBtn','#jobseeking')">Arbeitssuchend
-      </label>
-      <label class="option-card">
-        <input type="radio" name="employmentStatus" value="student_training" onchange="jump('employmentBtn','#step10')">Studium/Ausbildung
-      </label>
-      <label class="option-card">
-        <input type="radio" name="employmentStatus" value="school" onchange="jump('employmentBtn','#step10')">Beamter
-      </label>
-    </div>
-    <a href="#step10" id="employmentBtn" class="btn">OK ✓</a>    
-  </section>
+	<section class="step" id="step9">
+		<h1 class="question">Was machen Sie aktuell beruflich?</h1>
+		<div class="options-grid">
+			<label class="option-card">
+				<input type="radio" name="employmentStatus" value="empoyed" checked onchange="jump('employmentBtn','#step10')">Angestellt
+			</label>
+			<label class="option-card">
+				<input type="radio" name="employmentStatus" value="self_employed" onchange="jump('employmentBtn','#step10')">Selbstständig
+			</label>
+			<label class="option-card">
+				<input type="radio" name="employmentStatus" value="parantal_leave" onchange="jump('employmentBtn','#step10')">In Elternzeit
+			</label>
+			<label class="option-card">
+				<input type="radio" name="employmentStatus" value="job_seeking" onchange="jump('employmentBtn','#jobseeking')">Arbeitssuchend
+			</label>
+			<label class="option-card">
+				<input type="radio" name="employmentStatus" value="student_training" onchange="jump('employmentBtn','#step10')">Studium/Ausbildung
+			</label>
+			<label class="option-card">
+				<input type="radio" name="employmentStatus" value="school" onchange="jump('employmentBtn','#step10')">Beamter
+			</label>
+		</div>
+		<a href="#step10" id="employmentBtn" class="btn">OK ✓</a>		
+	</section>
 
-  <section class="step" id="step10">
-    <h1 class="question">Was war bisher der Grund, warum sie noch keine Förderung genutzt haben?</h1>
-    <div class="options-grid">
-      <label class="option-card">
-        <input type="radio" name="reason" value="cost">
-	      Kosten
-      </label>
-      <label class="option-card">
-        <input type="radio" name="reason" value="time" >
-	      Zeit
-      </label>
-      <label class="option-card">
-        <input type="radio" name="reason" value="knowledge" checked>
-	      Ich wusste nichts davon
-      </label>
-      <label class="option-card">
-        <input type="radio" name="reason" value="other" >
-	      Etwas anderes
-      </label>
-    </div>
-    <a href="#step11" class="btn">OK ✓</a>
-  </section>
+	<section class="step" id="step10">
+		<h1 class="question">Was war bisher der Grund, warum sie noch keine Förderung genutzt haben?</h1>
+		<div class="options-grid">
+			<label class="option-card">
+				<input type="radio" name="reason" value="cost">
+				Kosten
+			</label>
+			<label class="option-card">
+				<input type="radio" name="reason" value="time" >
+				Zeit
+			</label>
+			<label class="option-card">
+				<input type="radio" name="reason" value="knowledge" checked>
+				Ich wusste nichts davon
+			</label>
+			<label class="option-card">
+				<input type="radio" name="reason" value="other" >
+				Etwas anderes
+			</label>
+		</div>
+		<a href="#step11" class="btn">OK ✓</a>
+	</section>
 
-  <section class="step" id="step11">
-    <h1 class="question">Was ist Ihnen wichtig?</h1>
-    <div class="options-grid">
-      <label class="checkboxes" for="pzr">
-        <input type="checkbox" name="pzr" id="pzr" value="professionelle zahnreinigung">
-        Professionelle Zahnreinigung
-      </label>
-      <label class="checkboxes" for="zahnbehandlungundzahnersatz">
-        <input type="checkbox" name="zahnbehandlungundzahnersatz" id="zahnbehandlungundzahnersatz" value="zahnbehandlungundzahnersatz">
-        Zahnbehandlung und Zahnersatz
-      </label>
-      <label class="checkboxes" for="kieferorthopädie">
-        <input type="checkbox" name="kieferorthopädie" id="kieferorthopädie" value="kieferorthopädie">
-        Kieferorthopädie
-      </label>
-      <label class="checkboxes" for="altersrückstellungen">
-        <input type="checkbox" name="altersrückstellungen" id="altersrückstellungen" value="altersrückstellungen">
-        Altersrückstellungen
-      </label>
-    </div>
-    <a href="#step12" class="btn">OK ✓</a>
-  </section>
+	<section class="step" id="step11">
+		<h1 class="question">Was ist Ihnen wichtig?</h1>
+		<div class="options-grid">
+			<label class="option-card">
+				<input type="checkbox" name="pzr" value="Professionelle Zahnreinigung">
+				Professionelle Zahnreinigung
+			</label>
+			<label class="option-card">
+				<input type="checkbox" name="zbuze" value="Zahnbehandlung und Zahnersatz">
+				Zahnbehandlung und Zahnersatz
+			</label>
+			<label class="option-card">
+				<input type="checkbox" name="ko" value="Kieferorthopädie">
+				Kieferorthopädie
+			</label>
+			<label class="option-card">
+				<input type="checkbox" name="ar" value="Altersrückstellungen">
+				Altersrückstellungen
+			</label>
+		</div>
+		<a href="#step12" class="btn">OK ✓</a>
+	</section>
 
-  <section class="step" id="step12">
-    <h1 class="title">Glückwunsch, dass Sie diesen Schritt gegangen sind - eine Förderung für Sie ist möglich</h1>
-    <div class="i-text">
-	    Damit wir die Förderung individuell prüfen und durchführen können, brauchen wir Ihre Kontaktdaten.
-	    Natürlich kostenlos & unverbindlich.
-    </div>
-    <input type="text" class="input-text" placeholder="Max" name="firstname" id="firstname" required>
-    <input type="text" class="input-text" placeholder="Mustermann" name="lastname" id="lastname" required>
-    <input type="tel" class="input-text" placeholder="Telefonnummer" name="phone" id="phone" required>
-    <input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email" id="email">
-    <div style="width: 100%; max-width: 400px; margin: 5px;">
-      <input type="checkbox" value="true"  name="consentGiven" id="dsgvo1" required oninvalid="this.setCustomValidity('Bitte die Erlaubnis zur Kontaktaufnahme geben')" oninput="this.setCustomValidity('')">
-      <label for="dsgvo1">Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</label>
-    </div>
-    <button type="submit" class="btn">Absenden</button>
-  </section>
+	<section class="step" id="step12">
+		<h1 class="title">Glückwunsch, dass Sie diesen Schritt gegangen sind - eine Förderung für Sie ist möglich</h1>
+		<div class="i-text">
+			Damit wir die Förderung individuell prüfen und durchführen können, brauchen wir Ihre Kontaktdaten.
+			Natürlich kostenlos & unverbindlich.
+		</div>
+		<input type="text" class="input-text" placeholder="Max" name="firstname" required>
+		<input type="text" class="input-text" placeholder="Mustermann" name="lastname" required>
+		<input type="tel" class="input-text" placeholder="Telefonnummer" name="phone" required>
+		<input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email">
+		<div style="width: 100%; max-width: 400px; margin: 5px;">
+			<input type="checkbox" value="true"  name="consentGiven" id="dsgvo1" required oninvalid="this.setCustomValidity('Bitte die Erlaubnis zur Kontaktaufnahme geben')" oninput="this.setCustomValidity('')">
+			<label for="dsgvo1">Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</label>
+		</div>
+		<button type="submit" class="btn">Absenden</button>
+	</section>
 
-  <section class="step" id="step13">
-    <h1 class="title">Glückwunsch, dass Sie diesen Schritt gegangen sind – ein individueller Check-up ist möglich!</h1>
-    <div class="i-text">
-	    Damit wir Ihnen individuell helfen können, brauchen wir Ihre Kontaktdaten.
-	    Natürlich kostenlos & unverbindlich.
-    </div>
-    <input type="text" class="input-text" placeholder="Max" name="firstname" id="firstname" required>
-    <input type="text" class="input-text" placeholder="Mustermann" name="lastname" id="lastname" required>
-    <input type="tel" class="input-text" placeholder="Telefonnummer" name="phone" id="phone" required>
-    <input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email" id="email">
-    <div style="width: 100%; max-width: 400px; margin: 5px;">
-      <input type="checkbox" value="true"  name="consentGiven" id="dsgvo1" required oninvalid="this.setCustomValidity('Bitte die Erlaubnis zur Kontaktaufnahme geben')" oninput="this.setCustomValidity('')">
-      <label for="dsgvo1">Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</label>
-    </div>
-    <button type="submit" class="btn">Absenden</button>
-  </section>
+	<section class="step" id="step13">
+		<h1 class="title">Glückwunsch, dass Sie diesen Schritt gegangen sind – ein individueller Check-up ist möglich!</h1>
+		<div class="i-text">
+			Damit wir Ihnen individuell helfen können, brauchen wir Ihre Kontaktdaten.
+			Natürlich kostenlos & unverbindlich.
+		</div>
+		<input type="text" class="input-text" placeholder="Max" name="firstname" required>
+		<input type="text" class="input-text" placeholder="Mustermann" name="lastname" required>
+		<input type="tel" class="input-text" placeholder="Telefonnummer" name="phone" required>
+		<input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email">
+		<div style="width: 100%; max-width: 400px; margin: 5px;">
+			<input type="checkbox" value="true"  name="consentGiven" id="dsgvo2" required oninvalid="this.setCustomValidity('Bitte die Erlaubnis zur Kontaktaufnahme geben')" oninput="this.setCustomValidity('')">
+			<label for="dsgvo2">Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</label>
+		</div>
+		<button type="submit" class="btn">Absenden</button>
+	</section>
 
-    <section class="step" id="step14">
-    <h1 class="title">Wir überprüfen für Sie alternative Möglichkeiten, die Förderung zu erhalten</h1>
-    <div class="i-text">
-	    Damit wir Ihnen das Ergebniss mitteilen können, benötigen wir Ihre Kontaktdaten.
-	    Natürlich kostenlos & unverbindlich.
-    </div>
-    <input type="text" class="input-text" placeholder="Max" name="firstname" id="firstname" required>
-    <input type="text" class="input-text" placeholder="Mustermann" name="lastname" id="lastname" required>
-    <input type="tel" class="input-text" placeholder="Telefonnummer" name="phone" id="phone" required>
-    <input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email" id="email">
-    <div style="width: 100%; max-width: 400px; margin: 5px;">
-      <input type="checkbox" value="true"  name="consentGiven" id="dsgvo1" required oninvalid="this.setCustomValidity('Bitte die Erlaubnis zur Kontaktaufnahme geben')" oninput="this.setCustomValidity('')">
-      <label for="dsgvo1">Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</label>
-    </div>
-    <button type="submit" class="btn">Absenden</button>
-  </section>
+	<section class="step" id="step14">
+		<h1 class="title">Wir überprüfen für Sie alternative Möglichkeiten, die Förderung zu erhalten</h1>
+		<div class="i-text">
+			Damit wir Ihnen das Ergebniss mitteilen können, benötigen wir Ihre Kontaktdaten.
+			Natürlich kostenlos & unverbindlich.
+		</div>
+		<input type="text" class="input-text" placeholder="Max" name="firstname" required>
+		<input type="text" class="input-text" placeholder="Mustermann" name="lastname" required>
+		<input type="tel" class="input-text" placeholder="Telefonnummer" name="phone" required>
+		<input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email">
+		<div style="width: 100%; max-width: 400px; margin: 5px;">
+			<input type="checkbox" value="true"  name="consentGiven" id="dsgvo3" required oninvalid="this.setCustomValidity('Bitte die Erlaubnis zur Kontaktaufnahme geben')" oninput="this.setCustomValidity('')">
+			<label for="dsgvo3">Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</label>
+		</div>
+		<button type="submit" class="btn">Absenden</button>
+	</section>
 
 </form>
 
 <!--Not Elegible text-->
 
 <section class="step" id="over56">
-    <h1 class="title">Hinweis</h1>
-    <h1 class="question">Eine direkte Förderung ist für Sie leider nicht möglich</h1>
-    <div class="info-text">
-    Gerne prüfen wir für Sie, ob es alternative Möglichkeiten gibt, Förderungen zu erhalten.
-    </div>
-    <a href="#step14" class="btn">Jetzt Prüfen lassen ✓</a>
+		<h1 class="title">Hinweis</h1>
+		<h1 class="question">Eine direkte Förderung ist für Sie leider nicht möglich</h1>
+		<div class="info-text">
+		Gerne prüfen wir für Sie, ob es alternative Möglichkeiten gibt, Förderungen zu erhalten.
+		</div>
+		<a href="#step14" class="btn">Jetzt Prüfen lassen ✓</a>
 </section>
 
 <section class="step" id="under18">
-    <h1 class="title">Hinweis</h1>
-    <h1 class="question">Für Minderjährige ist eine Prüfung aktuell nicht möglich.</h1>
-    <div class="info-text">
-    Falls Sie ein Elternteil sind und sich für Förderung für Ihr Kind interessieren, geben Sie bitte Ihr aktuelles Alter an.
-    </div>
-    <a href="#step1" class="btn">Fragebogen starten</a>
+		<h1 class="title">Hinweis</h1>
+		<h1 class="question">Für Minderjährige ist eine Prüfung aktuell nicht möglich.</h1>
+		<div class="info-text">
+		Falls Sie ein Elternteil sind und sich für Förderung für Ihr Kind interessieren, geben Sie bitte Ihr aktuelles Alter an.
+		</div>
+		<a href="#step1" class="btn">Fragebogen starten</a>
 </section>
 
 <section class="step" id="theInsurer">
-    <h1 class="title">Hinweis</h1>
-    <h1 class="question">Die Prüfung sollte durch den Versicherungsnehmer erfolgen.</h1>
-    <div class="info-text">
-    Bitte leiten Sie diesen kurzen Fragebogen an den Versicherungsnehmer weiter.
-    </div>
-    <a href="#step1" class="btn">Fragebogen starten</a>
+		<h1 class="title">Hinweis</h1>
+		<h1 class="question">Die Prüfung sollte durch den Versicherungsnehmer erfolgen.</h1>
+		<div class="info-text">
+		Bitte leiten Sie diesen kurzen Fragebogen an den Versicherungsnehmer weiter.
+		</div>
+		<a href="#step1" class="btn">Fragebogen starten</a>
 </section>
 
 <section class="step" id="jobseeking">
-    <h1 class="title">Hinweis</h1>
-    <h1 class="question">Eine Prüfung ist aktuell leider nur eingeschränkt möglich.</h1>
-    <div class="info-text">
-    Bei Arbeitssuchenden ist die Förder- und Versicherungssituation sehr stark eingeschränkt und die Nutzung von Förderungen erschwert.
-    </div>
+		<h1 class="title">Hinweis</h1>
+		<h1 class="question">Eine Prüfung ist aktuell leider nur eingeschränkt möglich.</h1>
+		<div class="info-text">
+		Bei Arbeitssuchenden ist die Förder- und Versicherungssituation sehr stark eingeschränkt und die Nutzung von Förderungen erschwert.
+		</div>
 </section>
 
 <section class="step" id="notElegible">
-    <h1 class="title">Not Elegible</h1>
+		<h1 class="title">Not Elegible</h1>
 </section>
 
 </body>
