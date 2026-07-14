@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Zahnversicherung</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="/style.css">
 	<link rel="preload" href="public/HausHintergrund.jpg" as="image" type="image/jpeg">
 	<script>
 		window.addEventListener('DOMContentLoaded', () => {
@@ -33,9 +33,9 @@
 <body>
 
 <section class="step" id="start">
-	<h1 class="question">Prüfen sie jetzt, ob Krankenkassen Ihre Zahnzusatz fördert</h1>
+	<h1 class="question">Prüfen sie jetzt, ob Ihre Krankenkasse Ihre Zahngesundheit fördert</h1>
 	<div class="i-text">
-	Meine Förderpartner prüft kostenlos, ob Krankenkassen Ihre Zahnzusatz fördern.
+	Meine Förderpartner prüfen das kostenlos für Sie.
 	Anonym & in unter 60 Sekunden.
 	</div>
 	<a href="#step1" class="btn">Jetzt Prüfen ✓</a>
@@ -44,7 +44,7 @@
 <form class="form-container" action="/save.php" method="POST">
 
 	<section class="step" id="step1">
-		<h1 class="question">Wie sind Sie bisher versichert?</h1>
+		<h1 class="question">Wie sind Sie aktuel krankenversichert?</h1>
 		<div class="options-grid">
 			<label class="option-card" >
 			<input type="radio" name="insuranceType" value="gesetzlich" checked onchange="jump('PrivatBtn','#step2')">
@@ -87,13 +87,13 @@
 	</section>
 
 	<section class="step" id="step3">
-		<h1 class="question">Bei welcher Krankenkasse sind Sie aktuell versichert?</h1>
+		<h1 class="question">Bei welcher privaten Krankenversicherung sind Sie aktuell versichert?</h1>
 		<input type="text" class="input-text" placeholder="Allianz, Arag, Axa..." name="insurancePKV">
 		<a href="#step8" class="btn">OK ✓</a>
 	</section>
 
 	<section class="step" id="step4">
-		<h1 class="question">Sind sie selbst- oder Familienversichert?</h1>
+		<h1 class="question">Sind sie selbst versichert oder Familienversichert?</h1>
 		<div class="options-grid">
 			<label class="option-card" >
 				<input type="radio" name="family" value="self_insured" checked onchange="jump('holderBtn','#step6')">Selbst versichert
@@ -106,7 +106,7 @@
 	</section>
 
 	<section class="step" id="step5">
-		<h1 class="question">Wer ist Versicherungsnehmer?</h1>
+		<h1 class="question">Wer ist der Versicherungsnehmer?</h1>
 		<div class="options-grid">
 			<label class="option-card">
 				<input type="radio" name="hasDentalSupplement" value="ja" checked onchange="jump('familyBtn','#step6')">
@@ -121,7 +121,7 @@
 	</section>
 
 	<section class="step" id="step6">
-		<h1 class="question">Haben Sie eine Zahnzusatzversicherung?</h1>
+		<h1 class="question">Haben Sie bereits eine Zahnzusatzversicherung?</h1>
 		<div class="options-grid">
 			<label class="option-card">
 				<input type="radio" name="hasDentalSupplement" value="ja" checked onchange="jump('dentalSupplementBtn','#step7')">
@@ -136,7 +136,7 @@
 	</section>
 
 	<section class="step" id="step7">
-		<h1 class="question">Bei welcher Gesellschaft besteht aktuell Ihre Zahnzusatzversicherung?</h1>
+		<h1 class="question">Bei welcher Gesellschaft besteht Ihre Zahnzusatzversicherung?</h1>
 		<input type="text" class="input-text" placeholder="Allianz, Arag, Axa..." name="dentalSupplementCompany">
 		<a href="#step8" class="btn">OK ✓</a>
 	</section>
@@ -257,7 +257,7 @@
 	</section>
 
 	<section class="step" id="step13">
-		<h1 class="title">Glückwunsch, dass Sie diesen Schritt gegangen sind – ein individueller Check-up ist möglich!</h1>
+		<h1 class="title">Glückwunsch, dass Sie diesen Schritt gegangen sind – <br> ein individueller Check-up ist möglich!</h1>
 		<div class="i-text">
 			Damit wir Ihnen individuell helfen können, brauchen wir Ihre Kontaktdaten.
 			Natürlich kostenlos & unverbindlich.
