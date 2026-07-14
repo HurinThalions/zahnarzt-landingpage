@@ -52,7 +52,7 @@
 			</label>
 			<label class="option-card">
 	<!-- Privatvesicherte können keine Zusatz- und Familienversicherung haben, deswegen wird die Zusatz übersprungen. -->
-			<input type="radio" name="insuranceType" value="privat" onchange="jump('PrivatBtn','#step3'); jump('notElegible','#step13')">
+			<input type="radio" name="insuranceType" value="privat" onchange="jump('PrivatBtn','#step3'); jump('elegibleBtn','#step13')">
 			Privat
 			</label>
 		</div>
@@ -236,7 +236,7 @@
 				Altersrückstellungen
 			</label>
 		</div>
-		<a href="#step12" class="btn">OK ✓</a>
+		<a href="#step12" id="elegibleBtn" class="btn">OK ✓</a>
 	</section>
 
 	<section class="step" id="step12">
