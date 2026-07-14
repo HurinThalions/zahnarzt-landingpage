@@ -63,11 +63,11 @@
 		<h1 class="question">Bei welcher Krankenkasse sind Sie aktuell versichert?</h1>
 			<div class="options-grid">
 				<label class="option-card">
-					<input type="radio" name="insuranceGKV" value="Aok" required>
+					<input type="radio" name="insuranceGKV" value="Aok" checked required>
 					AOK
 				</label>
 				<label class="option-card">
-					<input type="radio" name="insuranceGKV" value="Techniker" checked>
+					<input type="radio" name="insuranceGKV" value="Techniker">
 					DAK
 				</label>
 				<label class="option-card">
@@ -128,7 +128,7 @@
 				Ja
 			</label>
 			<label class="option-card">
-				<input type="radio" name="hasDentalSupplement" value="nein" checked onchange="jump('dentalSupplementBtn','#step8')">
+				<input type="radio" name="hasDentalSupplement" value="nein" onchange="jump('dentalSupplementBtn','#step8')">
 				Nein
 			</label>
 		</div>
