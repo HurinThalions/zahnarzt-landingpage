@@ -47,16 +47,16 @@
 		<h1 class="question">Wie sind Sie aktuel krankenversichert?</h1>
 		<div class="options-grid">
 			<label class="option-card" >
-			<input type="radio" name="insuranceType" value="gesetzlich" checked onchange="jump('PrivatBtn','#step2')">
+			<input type="radio" name="insuranceType" value="gesetzlich" checked onchange="jump('PrivatBtn','#step3')">
 			Gesetzlich
 			</label>
 			<label class="option-card">
 	<!-- Privatvesicherte können keine Zusatz- und Familienversicherung haben, deswegen wird die Zusatz übersprungen. -->
-			<input type="radio" name="insuranceType" value="privat" onchange="jump('PrivatBtn','#step3'); jump('elegibleBtn','#step13')">
+			<input type="radio" name="insuranceType" value="privat" onchange="jump('PrivatBtn','#step2'); jump('elegibleBtn','#step7')">
 			Privat
 			</label>
 		</div>
-		<a href="#step2" class="btn" id="PrivatBtn">OK ✓</a>
+		<a href="#step3" class="btn" id="PrivatBtn">OK ✓</a>
 	</section>
 
 <!-- 
@@ -88,10 +88,10 @@
 	</section>
 -->
 	
-	<section class="step" id="step3">
+	<section class="step" id="step2">
 		<h1 class="question">Bei welcher Krankenversicherung sind Sie aktuell versichert?</h1>
 		<input type="text" class="input-text" placeholder="Allianz, Arag, Axa..." name="insurancePKV">
-		<a href="#step8" class="btn">OK ✓</a>
+		<a href="#step4" class="btn">OK ✓</a>
 	</section>
 
 <!--
@@ -124,19 +124,19 @@
 	</section>
 -->
 
-	<section class="step" id="step6">
+	<section class="step" id="step3">
 		<h1 class="question">Nutzen Sie bereits eine Zusatzversicherung?</h1>
 		<div class="options-grid">
 			<label class="option-card">
-				<input type="radio" name="hasDentalSupplement" value="ja" checked onchange="jump('dentalSupplementBtn','#step7')">
+				<input type="radio" name="hasDentalSupplement" value="ja" checked onchange="jump('dentalSupplementBtn','#step4')">
 				Ja
 			</label>
 			<label class="option-card">
-				<input type="radio" name="hasDentalSupplement" value="nein" onchange="jump('dentalSupplementBtn','#step8')">
+				<input type="radio" name="hasDentalSupplement" value="nein" onchange="jump('dentalSupplementBtn','#step4')">
 				Nein
 			</label>
 		</div>
-		<a href="#step7" class="btn" id="dentalSupplementBtn">OK ✓</a>
+		<a href="#step4" class="btn" id="dentalSupplementBtn">OK ✓</a>
 	</section>
 
 <!--
@@ -147,7 +147,7 @@
 	</section>
 -->
 
-	<section class="step" id="step8">
+	<section class="step" id="step4">
 		<h1 class="question">Wie alt sind Sie?</h1>
 		<div class="options-grid">
 			<label class="option-card">
@@ -155,15 +155,15 @@
 				Unter 18
 			</label>
 			<label class="option-card">
-				<input type="radio" name="ageRange" value="18-25" checked onchange="jump('ageBtn','#step9')">
+				<input type="radio" name="ageRange" value="18-25" checked onchange="jump('ageBtn','#step5')">
 				18-25
 			</label>
 			<label class="option-card">
-				<input type="radio" name="ageRange" value="26-35" onchange="jump('ageBtn','#step9')">
+				<input type="radio" name="ageRange" value="26-35" onchange="jump('ageBtn','#step5')">
 				26-35
 			</label>
 			<label class="option-card">
-				<input type="radio" name="ageRange" value="36-55" onchange="jump('ageBtn','#step9')">
+				<input type="radio" name="ageRange" value="36-55" onchange="jump('ageBtn','#step5')">
 				36-55
 			</label>
 			<label class="option-card">
@@ -171,7 +171,7 @@
 				56 und älter
 			</label>
 		</div>
-		<a href="#step9" id="ageBtn" class="btn">OK ✓</a>
+		<a href="#step5" id="ageBtn" class="btn">OK ✓</a>
 	</section>
 
 <!--
@@ -201,7 +201,7 @@
 	</section>
 -->
 
-	<section class="step" id="step10">
+	<section class="step" id="step5">
 		<h1 class="question">Was war bisher der Grund, warum sie noch keine Förderung genutzt haben?</h1>
 		<div class="options-grid">
 			<label class="option-card">
@@ -221,7 +221,7 @@
 				Etwas anderes
 			</label>
 		</div>
-		<a href="#step11" class="btn">OK ✓</a>
+		<a href="#step6" class="btn">OK ✓</a>
 	</section>
 
 <!--
@@ -249,8 +249,8 @@
 	</section>
 -->
 
-	<section class="step" id="step12">
-		<h1 class="title">Glückwunsch, dass Sie diesen Schritt gegangen sind - eine Förderung für Sie ist möglich</h1>
+	<section class="step" id="step6">
+		<h1 class="title">Glückwunsch, dass Sie diesen Schritt gegangen sind - Sie können eine Förderung nutzen</h1>
 		<div class="i-text">
 			Damit wir die Förderung individuell prüfen und durchführen können, brauchen wir Ihre Kontaktdaten.
 			Natürlich kostenlos & unverbindlich.
@@ -261,12 +261,12 @@
 		<input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email">
 		<div style="width: 100%; max-width: 400px; margin: 5px;">
 			<input type="checkbox" value="true"  name="consentGiven" id="dsgvo1" required oninvalid="this.setCustomValidity('Bitte die Erlaubnis zur Kontaktaufnahme geben')" oninput="this.setCustomValidity('')">
-			<label for="dsgvo1">Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</label>
+			<label for="dsgvo1">Ich bin damit einverstanden, dass meine Angaben zur individuellen Prüfung und zur Kontaktaufnahme verwendet werden dürfen.</label>
 		</div>
 		<button type="submit" class="btn">Absenden</button>
 	</section>
 
-	<section class="step" id="step13">
+	<section class="step" id="step7">
 		<h1 class="title">Glückwunsch, dass Sie diesen Schritt gegangen sind – <br> ein individueller Check-up ist möglich!</h1>
 		<div class="i-text">
 			Damit wir Ihnen individuell helfen können, brauchen wir Ihre Kontaktdaten.
@@ -278,12 +278,12 @@
 		<input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email">
 		<div style="width: 100%; max-width: 400px; margin: 5px;">
 			<input type="checkbox" value="true"  name="consentGiven" id="dsgvo2" required oninvalid="this.setCustomValidity('Bitte die Erlaubnis zur Kontaktaufnahme geben')" oninput="this.setCustomValidity('')">
-			<label for="dsgvo2">Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</label>
+			<label for="dsgvo2">Ich bin damit einverstanden, dass meine Angaben zur individuellen Prüfung und zur Kontaktaufnahme verwendet werden dürfen.</label>
 		</div>
 		<button type="submit" class="btn">Absenden</button>
 	</section>
 
-	<section class="step" id="step14">
+	<section class="step" id="step8">
 		<h1 class="title">Wir überprüfen für Sie alternative Möglichkeiten, die Förderung zu erhalten</h1>
 		<div class="i-text">
 			Damit wir Ihnen das Ergebniss mitteilen können, benötigen wir Ihre Kontaktdaten.
@@ -295,7 +295,7 @@
 		<input type="email" class="input-text" placeholder="deine@email.de (optional)" name="email">
 		<div style="width: 100%; max-width: 400px; margin: 5px;">
 			<input type="checkbox" value="true"  name="consentGiven" id="dsgvo3" required oninvalid="this.setCustomValidity('Bitte die Erlaubnis zur Kontaktaufnahme geben')" oninput="this.setCustomValidity('')">
-			<label for="dsgvo3">Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und zur individuellen Prüfung verwendet werden dürfen.</label>
+			<label for="dsgvo3">Ich bin damit einverstanden, dass meine Angaben zur individuellen Prüfung und zur Kontaktaufnahme verwendet werden dürfen.</label>
 		</div>
 		<button type="submit" class="btn">Absenden</button>
 	</section>
